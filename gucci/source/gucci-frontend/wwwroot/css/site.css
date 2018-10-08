@@ -35,3 +35,15 @@ body {
         display: none;
     }
 }
+
+
+
+.esri-view .esri-directions {
+    position: fixed;
+    right: 15px;
+}
+
+.esri-view .esri-component.esri-attribution {
+    position: fixed;
+}
+
