@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using gucci_frontend.Models;
 
+//Test Commit AR
+
 namespace gucci_frontend.Controllers
 {
     public class HomeController : Controller
