@@ -1,7 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
 <div class="page-body">
     <div class="container-fluid">
         <div class="page-sidebar toggled sidebar">
@@ -9,7 +8,6 @@
                 <i class="ion ion-ios-arrow-forward show-on-collapsed"></i>
                 <i class="ion ion-ios-arrow-back hide-on-collapsed"></i>
             </nav>
-
             <ul class="nav nav-pills nav-stacked" id="sidebar-stacked">
                 <li class="d-lg-none">
                     <a href="#" class="sidebar-close"><i class="ion ion-ios-arrow-left"></i></a>
@@ -60,7 +58,6 @@
                     <ul class="nav nav-pills nav-stacked collapse" id="p4">
                         <li class="nav-item"><a class="nav-link" href="form-elements.html">Form Elements</a></li>
                         <li class="nav-item"><a class="nav-link" href="form-validation.html">Form Validation</a></li>
-
                         <li class="nav-item"><a class="nav-link" href="form-summernote.html">Summernote</a></li>
                     </ul>
                 </li>
@@ -90,8 +87,6 @@
             </ul>
         </div>
         <div class="page-content">
-
-
 
 
             <div class="row">
@@ -137,7 +132,6 @@
                 </div><!-- /.col-md-3 -->
             </div>
 
-
             <div class="row">
                 <div class="col-md-9 col-sm-8">
                     <div class="card card-default widget">
@@ -161,7 +155,6 @@
                                     <option selected>Line Chart</option>
                                     <option>Candle Sticks</option>
                                 </select>
-
                                 <a href="#" class="widget-minify"><i class="fa fa-chevron-up"></i></a>
                                 <a href="#" class="widget-close"><i class="fa fa-times"></i></a>
                             </div>
@@ -312,7 +305,6 @@
                                     </table>
                                 </li>
                             </ul>
-
                         </div>
                     </div>
                 </div><!-- /.col-lg-4 -->
@@ -405,7 +397,6 @@
                                         <span class="text-sm text-muted">Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, quam semper libero..</span>
                                     </div>
                                 </div>
-
                                 <div class="media">
                                     <div class="media-left mr-1">
                                         <a href="#">
@@ -420,7 +411,6 @@
                                         <span class="text-sm text-muted">Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet..</span>
                                     </div>
                                 </div>
-
                                 <div class="media">
                                     <div class="media-left mr-1">
                                         <a href="#">
@@ -435,7 +425,6 @@
                                         <span class="text-sm text-muted">Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, quam semper libero..</span>
                                     </div>
                                 </div>
-
                                 <div class="media">
                                     <div class="media-left mr-1">
                                         <a href="#">
@@ -513,7 +502,6 @@
                     </div>
                 </div><!-- /.col-md-4 -->
             </div>
-
             <footer class="site-footer text-center">
                 <p>&copy; 2018 Spark</p>
                 <ul class="list-inline">
@@ -526,15 +514,12 @@
         </div>
     </div>
 </div>
-
 @section Scripts
-{
-    
+    {
     <script src="https://js.arcgis.com/4.8/"></script>
-
     <script type="text/javascript">
 
-        
+
 
         require([
             "esri/Map",
@@ -556,7 +541,6 @@
             // Point the URL to a valid route service
             var routeTask = new RouteTask({
                 url: "https://route.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World?token=UHRT9utKqjr3B7kf-gFK9Eqe4n0fpXuhw05PsUWE2r5U0VoDyy6wzFlPkVA8Pswm1DG8V0G_gnWaYmhegCIT6eJMX7s25ypGICtHLOJnFOLHq9fJbQNTVx98p66h5OXhxQwCQknq_TfnEwG-EYB4yA.."
-
             });
 
             // The stops and route result will be stored in this layer
@@ -667,8 +651,6 @@
                 routeLayer.add(routeResult);
             }
         });
-
-        console.log('testing');
     </script>
     <script src="../js/pages/dashboard.js"></script>
 }
