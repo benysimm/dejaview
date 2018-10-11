@@ -533,10 +533,7 @@
     <script src="https://js.arcgis.com/4.8/"></script>
 
     <script type="text/javascript">
-
-        
-
-        require([
+require([
             "esri/Map",
             "esri/views/MapView",
             "esri/Graphic",
@@ -555,7 +552,8 @@
 
             // Point the URL to a valid route service
             var routeTask = new RouteTask({
-                url: "https://route.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World"
+                url: "https://route.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World?token=UHRT9utKqjr3B7kf-gFK9Eqe4n0fpXuhw05PsUWE2r5U0VoDyy6wzFlPkVA8Pswm1DG8V0G_gnWaYmhegCIT6eJMX7s25ypGICtHLOJnFOLHq9fJbQNTVx98p66h5OXhxQwCQknq_TfnEwG-EYB4yA.."
+
             });
 
             // The stops and route result will be stored in this layer
@@ -616,8 +614,8 @@
                 latitude: -35.316067,
                 longitude: 149.135420
             };
-            
-            
+
+
 
             // Create a symbol for drawing the point
             var markerSymbol = {
@@ -667,6 +665,5 @@
             }
         });
 
-        console.log('testing');
-    </script>
+        console.log('testing');</script>
 }
