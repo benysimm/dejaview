@@ -1,0 +1,4 @@
+﻿var Page = {
+    init:function() {
+    }
+}
