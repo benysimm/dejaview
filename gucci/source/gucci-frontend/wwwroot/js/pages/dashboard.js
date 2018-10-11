@@ -1,103 +1,4 @@
 var Page = {
-    createChartProfit: function() {
-    	//chartProfit
-        var chartProfitData = [
-            {
-                color: "#4DD495",
-                label: "Loss",
-                data: [
-                    [3, 6], [4, 7], [5, 8], [6, 11],
-                    [7, 9], [8, 11], [9, 8], [10, 14],
-                    [11, 12], [12, 16], [13, 9], [14, 10],
-                    [15, 14], [16, 15], [17, 9], [18, 12],
-                    [19, 16], [20, 19], [21, 21], [22, 18],
-                    [23, 24], [24, 32], [25, 31], [26, 36]
-                ],
-
-                lines: {
-                    show: true,
-                    fill: true,
-                    fillColor: {
-                        colors: [
-                            {
-                                opacity: 0.1
-                            }, {
-                                opacity: 0.1
-                            }
-                        ]
-                    }
-                },
-                points: {
-                    show: true
-                },
-                shadowSize: 0
-            },
-            {
-                color: "#AFBBBF",
-                label: "Profit",
-                data: [
-                    [3, 3], [4, 5], [5, 4], [6, 9],
-                    [7, 5], [8, 8], [9, 5], [10, 6],
-                    [11, 4], [12, 7], [13, 4], [14, 3],
-                    [15, 4], [16, 6], [17, 4], [18, 7],
-                    [19, 12], [20, 12], [21, 18], [22, 15],
-                    [23, 20], [24, 25], [25, 22], [26, 25]
-                ],
-                lines: {
-                    show: true,
-                    fill: true,
-                    fillColor: {
-                        colors: [
-                            {
-                                opacity: 0.2
-                            }, {
-                                opacity: 0.2
-                            }
-                        ]
-                    }
-                },
-                points: {
-                    show: true
-                },
-                shadowSize: 0
-            }
-        ];
-        var chartProfitOptions = {
-            xaxis: {
-                tickLength: 0,
-                // tickDecimals: 0,
-                color: '#353535',
-                // tickFormatter: function(val, axis) {
-                //     return "";
-                // }
-            },
-            yaxis: {
-                tickLength: 0,
-                // min: 0,
-                color: '#353535',
-                // tickFormatter: function(val, axis) {
-                //     return "";
-                // }
-            },
-            grid: {
-                hoverable: true,
-                clickable: false,
-                borderWidth: 0,
-                aboveData: false,
-
-            },
-            legend: {
-                noColumns: 2,
-                container: $("#chart-profit-legend")
-            },
-            tooltip: true,
-            tooltipOpts: {
-                defaultTheme: false,
-                content: " <span>%x.0 May</span> , <span>%s</span> : <span>%y.0M</span>",
-            }
-        };
-        $.plot($("#chart-profit"), chartProfitData, chartProfitOptions);
-    },
     createChartPie: function() {
 
         var chartPieData = [
@@ -200,7 +101,6 @@ var Page = {
         });
     },
     init:function() {
-        this.createChartProfit();
         this.createChartPie();
         this.createWorldMap();
         this.createSalesSlider();
