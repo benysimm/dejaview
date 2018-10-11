@@ -43,7 +43,7 @@
         </div>
         <div class="page-content">
             <div class="row">
-                <div class="col-md-9 col-sm-8">
+                <div class="col-md-10 col-sm-9">
                     <div class="card card-default widget">
                         <div class="card-heading">
                             <div class="card-controls">
@@ -53,8 +53,18 @@
                             <h3 class="card-title">Honey Badger Route</h3>
                         </div>
                         <div class="card-body">
+                            <div style="float:left; width:10%;">
+                                <button type="button" class="btn btn-success" id="planA">Plan A</button>
+                                <br /><br />
+                                <button type="button" class="btn btn-default" id="planB">Plan B</button>
+                                <br /><br />
+                                <button type="button" class="btn btn-default" id="planC">Plan C</button>
+                                <br /><br />
+                                <button type="button" class="btn btn-danger" id="planX">Abort</button>
+                                <div id="planNumber">planA</div>
+                            </div>
                             <!--ArcGIS test-->
-                            <div style="height: 480px" id="simple-map-div"></div>
+                            <div style="height: 480px; float:left; width:90%" id="simple-map-div"></div>
                         </div>
                     </div>
                 </div><!-- /.col-md-9 -->
@@ -75,7 +85,7 @@
                                             Officer 1
                                             <span class="pull-right text-sm">5m ago</span>
                                         </p>
-                                        <span class="text-sm text-muted">Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, quam semper libero..</span>
+                                        <span class="text-sm text-muted">Alert - change plan</span>
                                     </div>
                                 </div>
                                 <div class="media">
@@ -84,23 +94,22 @@
                                             Officer 2
                                             <span class="pull-right text-sm">15m ago</span>
                                         </p>
-                                        <span class="text-sm text-muted">Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet..</span>
+                                        <span class="text-sm text-muted">Client on wrong side of road</span>
                                     </div>
                                 </div>
                                 <div class="media">
                                     <div class="media-body mb-3">
                                         <p class="media-heading weight-regular mb-0">
                                             Officer 1
-                                            <span class="pull-right text-sm">2h ago</span>
+                                            <span class="pull-right text-sm">20m ago</span>
                                         </p>
-                                        <span class="text-sm text-muted">Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, quam semper libero..</span>
+                                        <span class="text-sm text-muted">Client on the move</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div><!-- /.col-md-4 -->
-
             </div>
             <div class="row">
                 <div class="col-md-9 col-sm-8">
@@ -163,12 +172,44 @@
                 </ul>
             </footer>
         </div>
-        </div>
+    </div>
 </div>
 @section Scripts
     {
     <script src="https://js.arcgis.com/4.8/"></script>
     <script type="text/javascript">
+
+        function setButtonColour(plan) {
+            document.getElementById("planNumber").innerHTML = plan;
+            switch (plan) {
+                case "planA":
+                    document.getElementById("planA").className = "btn btn-success";
+                    document.getElementById("planB").className = "btn btn-default";
+                    document.getElementById("planC").className = "btn btn-default";
+                    document.getElementById("planX").className = "btn btn-danger";
+                    break;
+                case "planB":
+                    document.getElementById("planA").className = "btn btn-default";
+                    document.getElementById("planB").className = "btn btn-success";
+                    document.getElementById("planC").className = "btn btn-default";
+                    document.getElementById("planX").className = "btn btn-danger";
+                    break;
+                case "planC":
+                    document.getElementById("planA").className = "btn btn-default";
+                    document.getElementById("planB").className = "btn btn-default";
+                    document.getElementById("planC").className = "btn btn-success";
+                    document.getElementById("planX").className = "btn btn-danger";
+                    break;
+                case "planX":
+                    document.getElementById("planA").className = "btn btn-default";
+                    document.getElementById("planB").className = "btn btn-default";
+                    document.getElementById("planC").className = "btn btn-default";
+                    document.getElementById("planX").className = "btn btn-danger";
+                    break;
+                default:
+                    break;
+            }
+        }
 
         async function getPoint(id) {
             const response = await fetch("/api/points/" + id, {});
@@ -176,8 +217,6 @@
             console.log(json);
             return json;
         }
-
-
 
         require([
             "esri/Map",
@@ -189,6 +228,28 @@
             "esri/tasks/support/FeatureSet",
             "esri/core/urlUtils"
         ], function (Map, MapView, Graphic, GraphicsLayer, RouteTask, RouteParameters, FeatureSet, urlUtils) {
+
+            document.getElementById("planA").onclick = function () { setNewPlan("planA"); }
+            document.getElementById("planB").onclick = function () { setNewPlan("planB"); }
+            document.getElementById("planC").onclick = function () { setNewPlan("planC"); }
+            document.getElementById("planX").onclick = function () { setNewPlan("planX"); }
+
+            function setNewPlan(plan) {
+                setButtonColour(plan);
+                getPoint(1).then(data => {
+                    addPoint(data, routeLayer, routeParams);
+                }).then(() =>
+                    getPoint(2).then(data => {
+                        addPoint(data, routeLayer, routeParams);
+                    })).then(() =>
+                        getPoint(3).then(data => {
+                            addPoint(data, routeLayer, routeParams);
+                        })).then(() => {
+                            routeTask.solve(routeParams).then(showRoute);
+                            lastStop = routeParams.stops.features.splice(0, 1)[0];
+                        });
+
+            };
 
             // Creates a new point geometry object based on the json data object
             // then creates a new marker with that points data
@@ -296,9 +357,6 @@
                 }
             );
 
-
-
-
             function showRoute(data) {
 
                 console.log("calling showRoute");
@@ -307,6 +365,7 @@
                 routeResult.symbol = routeSymbol;
                 routeLayer.add(routeResult);
             }
+
         });
 
         require([
