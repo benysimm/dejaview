@@ -137,9 +137,10 @@
             "esri/tasks/RouteTask",
             "esri/tasks/support/RouteParameters",
             "esri/tasks/support/FeatureSet",
+            "esri/symbols/PictureMarkerSymbol",
             "esri/core/urlUtils"
         ], function (
-            Track, MapView, Map, Graphic, GraphicsLayer, RouteTask, RouteParameters, FeatureSet, urlUtils
+            Track, MapView, Map, Graphic, GraphicsLayer, RouteTask, RouteParameters, FeatureSet, PictureMarkerSymbol, urlUtils
         ) {
 
                 var routeSymbol = {
@@ -148,9 +149,24 @@
                     width: 5
                 };
 
+                var markerSymbol = {
+                    type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
+                    color: [226, 119, 40]
+                };
+
+                var bobafettSymbol = {
+                    type: "picture-marker",  // autocasts as new PictureMarkerSymbol()
+                    url: "/img/bobafett-32x32.png",
+                    width: "32px",
+                    height: "32px"
+                };
+
                 var routeTask = new RouteTask({
                     url: "https://route.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World?token=UHRT9utKqjr3B7kf-gFK9Eqe4n0fpXuhw05PsUWE2r5U0VoDyy6wzFlPkVA8Pswm1DG8V0G_gnWaYmhegCIT6eJMX7s25ypGICtHLOJnFOLHq9fJbQNTVx98p66h5OXhxQwCQknq_TfnEwG-EYB4yA.."
                 });
+
+                // The current GPS location will be rendered in this layer
+                var currentLocationLayer = new GraphicsLayer();
 
                 // The stops and route result will be stored in this layer
                 var routeLayer = new GraphicsLayer();
@@ -163,16 +179,9 @@
                     }
                 });
 
-                // Define the symbology used to display the route
-                var routeSymbol = {
-                    type: "simple-line", // autocasts as SimpleLineSymbol()
-                    color: [0, 0, 255, 0.5],
-                    width: 5
-                };
-
                 var map = new Map({
                     basemap: "topo",
-                    layers: [routeLayer] // Add the route layer to the map
+                    layers: [routeLayer, currentLocationLayer] // Add the route layer to the map
                 });
 
                 var view = new MapView({
@@ -182,149 +191,108 @@
                     zoom: 16
                 });
 
+                var deviceTestPath = [];
 
-                /*
-                 * -35.312709, 149.136369
-                 *
-                 *
-                 */
 
-                /*
-                    // First create a point geometry
-                    var point1 = {
-                        type: "point",  // autocasts as new Point()
-                        latitude: -35.312609,
-                        longitude: 149.136368
-                    };
+                loadRouteData();
 
-                    var point2 = {
-                        type: "point",  // autocasts as new Point()
-                        latitude: -35.313423,
-                        longitude: 149.137802
-                    };
+                loadDeviceLocations();
+            
+                // GPS tracking support
+                //                var track = new Track({
+                //                    view: view,
+                //                    id: "client"
+                //                });
+                //                view.ui.add(track, "top-left");
+                //
+                //                view.when(function () {
+                //                    track.start();
+                //                });
 
-                    var point3 = {
-                        type: "point",  // autocasts as new Point()
-                        latitude: -35.316067,
-                        longitude: 149.135420
-                    };
+            
+                setInterval(refreshMap, 5000);
 
-                    // Create a symbol for drawing the point
-                    var markerSymbol = {
-                        type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
-                        color: [226, 119, 40]
-                    };
-                    */
+                function refreshMap() {
+                    console.log('refreshMap locations.length = ' + deviceTestPath.length);
 
-                // Create a graphic and add the geometry and symbol to it
-                /*
-                    var stop1 = new Graphic({
-                        geometry: point1,
-                        symbol: markerSymbol
-                    });
+                    if (deviceTestPath.length === 0) return;
+                    
+                    var currentDeviceLocation = deviceTestPath.shift();
+                    console.log('currentDeviceLocation = ' + currentDeviceLocation.lat + '/' + currentDeviceLocation.long);
+                    var point = { type: "point", latitude: currentDeviceLocation.lat, longitude: currentDeviceLocation.long };
 
-                    var stop2 = new Graphic({
-                        geometry: point2,
-                        symbol: markerSymbol
-                    });
+                    var currentLocationPin = new Graphic({ geometry: point, symbol: bobafettSymbol });
+                    currentLocationLayer.removeAll();
+                    currentLocationLayer.add(currentLocationPin);
+                }
+            
+                // Call the server for a list of lat/long coordinates that defines the route
+                function loadRouteData() {
+                    $.getJSON("/data/client-route-data.json")
+                        .done(function (routeData) {
+                            var stopsList = getStops(routeData);
 
-                    var stop3 = new Graphic({
-                        geometry: point3,
-                        symbol: markerSymbol
-                    });
+                            for (var i = 0; i < stopsList.length; i++) {
+                                console.log('stopsList.symbol: ' + stopsList[i].symbol.type);
+                                routeParams.stops.features.push(stopsList[i]);
+                                routeLayer.add(stopsList[i]);
+                            }
 
-                    routeLayer.add(stop1);
-                    routeParams.stops.features.push(stop1);
-
-                    routeLayer.add(stop2);
-                    routeParams.stops.features.push(stop2);
-
-                    routeLayer.add(stop3);
-                    routeParams.stops.features.push(stop3);
-                */
-                var stopsList = getStops();
-
-                console.log('stopsList length: ' + stopsList.length);
-
-                for (var i = 0; i < stopsList.length; i++) {
-                    console.log('stop: ' + stopsList[i]);
-                    routeParams.stops.features.push(stopsList[i]);
+                            if (routeParams.stops.features.length >= 2) {
+                                routeTask.solve(routeParams).then(showRoute);
+                                lastStop = routeParams.stops.features.splice(0, 1)[0];
+                            }
+                        })
+                        .fail(function (jqxhr, textStatus, error) {
+                            var err = textStatus + ", " + error;
+                            console.log("Request failed: " + err);
+                        });
                 }
 
-                if (routeParams.stops.features.length >= 2) {
-                    routeTask.solve(routeParams).then(showRoute);
-                    lastStop = routeParams.stops.features.splice(0, 1)[0];
-                }
-
-                // Create an instance of the Track widget
-                // and add it to the view's UI
-                var track = new Track({
-                    view: view,
-                    id: "client"
-                });
-                view.ui.add(track, "top-left");
-
-
-                // The sample will start tracking your location
-                // once the view becomes ready
-                view.when(function () {
-                    track.start();
-                });
-
+                // Callback for once the route is computed, to plot the result
                 function showRoute(data) {
                     console.log("calling showRoute");
                     var routeResult = data.routeResults[0].route;
                     routeResult.symbol = routeSymbol;
                     routeLayer.add(routeResult);
                 }
-
-                function getStops() {
-                    // First create a point geometry
-                    var point1 = {
-                        type: "point",  // autocasts as new Point()
-                        latitude: -35.312609,
-                        longitude: 149.136368
-                    };
-
-                    var point2 = {
-                        type: "point",  // autocasts as new Point()
-                        latitude: -35.313423,
-                        longitude: 149.137802
-                    };
-
-                    var point3 = {
-                        type: "point",  // autocasts as new Point()
-                        latitude: -35.316067,
-                        longitude: 149.135420
-                    };
-
-                    // Create a symbol for drawing the point
-                    var markerSymbol = {
-                        type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
-                        color: [226, 119, 40]
-                    };
-
+            
+                // Given a list of simple lat/longs, turn them into a list of ArcGIS points for plotting
+                function getStops(routeData) {
                     var stopsList = [];
+                    console.log('routeData.length = ' + routeData.length);
 
+                    for (var i = 0; i < routeData.length; i++) {
+                        console.log('adding route id: ' + routeData[i].id + ' lat/long: ' + routeData[i].lat + "/" + routeData[i].long);
+                        
+                        var point = {
+                            type: "point",
+                            latitude: routeData[i].lat,
+                            longitude: routeData[i].long
+                        };
 
-                    // Create a graphic and add the geometry and symbol to it
-                    stopsList.push(new Graphic({
-                        geometry: point1,
-                        symbol: markerSymbol
-                    }));
-
-                    stopsList.push(new Graphic({
-                        geometry: point2,
-                        symbol: markerSymbol
-                    }));
-
-                    stopsList.push(new Graphic({
-                        geometry: point3,
-                        symbol: markerSymbol
-                    }));
+                        stopsList.push(new Graphic({
+                            geometry: point,
+                            symbol: markerSymbol
+                        }));
+                    }
 
                     return stopsList;
+                }
 
+                // Get the GPS lat/long coordindates of the device (for demo mode this is faked)
+                function loadDeviceLocations() {
+                    $.getJSON("/data/fake-gps-coordinates.json")
+                        .done(function (deviceLocations) {
+                            deviceTestPath = deviceLocations;
+                            for (var i = 0; i < deviceLocations.length; i++) {
+                                console.log('deviceLocations lat/long: ' + deviceLocations[i].lat + '/' + deviceLocations[i].long);
+                            }
+                        })
+                        .fail(function (jqxhr, textStatus, error) {
+                            var err = textStatus + ", " + error;
+                            console.log("Request failed: " + err);
+                        });
                 }
             });
 

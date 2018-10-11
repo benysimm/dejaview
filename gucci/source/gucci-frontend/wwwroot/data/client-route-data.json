@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "lat": -35.312609,
+    "long": 149.136368,
+    "visited": false
+  },
+  {
+    "id": 2,
+    "lat": -35.313423,
+    "long": 149.137802,
+    "visited": false
+  },
+  {
+    "id": 3,
+    "lat": -35.316067,
+    "long": 149.135420,
+    "visited": false
+  },
+  {
+    "id": 4,
+    "lat": -35.314460,
+    "long": 149.133091,
+    "visited": false
+  },
+  {
+    "id": 5,
+    "lat": -35.314829,
+    "long": 149.131811,
+    "visited": false
+  }
+]
