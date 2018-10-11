@@ -36,11 +36,13 @@ namespace gucci_frontend.Controllers
             return View();
         }
 
-<<<<<<< Updated upstream
+
         public IActionResult Client()
-=======
+        {
+            return View();
+        }
         public IActionResult CreateRoute()
->>>>>>> Stashed changes
+
         {
             return View();
         }
