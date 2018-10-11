@@ -3,55 +3,204 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - gucci_frontend</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+    <title>@ViewData["Title"] - Gucci</title>
+
+    <!-- External fonts -->
+    <link href="https://brick.a.ssl.fastly.net/Montserrat:300,400,500,600,700" rel="stylesheet">
+
+    <!-- NPM Packages -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/ionicons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/summernote.css" rel="stylesheet">
+    <link href="../css/fullcalendar.min.css" rel="stylesheet">
+    <link href="../css/morris.css" rel="stylesheet">
+
+    <!-- Vendor -->
+    <link href="../css/vendor/md-snackbars/md-snackbars.min.css" rel="stylesheet">
+    <link href="../css/vendor/zabuto/zabuto_calendar.min.css" rel="stylesheet">
+    <link href="../css/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+    <!-- Theme -->
+    <link href="../css/spark.css" rel="stylesheet">
+
 
     <link rel="stylesheet" href="https://js.arcgis.com/4.8/esri/css/main.css">
 
-
-    <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
-    </environment>
-    <environment exclude="Development">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-    </environment>
+    @*<link rel="stylesheet" href="~/css/site.css" />*@
 </head>
-<body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
+
+
+<body class="">
+    <!-- right-to-left -->
+
+    <div class="splash active">
+        <div class="icon"></div>
+    </div>
+
+    <div class="wrapper">
+
+        <nav class="navbar navbar-spark navbar-toggleable navbar-expand-md">
+            <div class="container-fluid">
+                <button type="button" class="sidebar-open d-lg-none">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">gucci</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Client">Client</a></li>
+                <a class="navbar-brand d-none d-lg-inline-block" href="index.html">
+                    <i class="ion ion-ios-pulse-strong" aria-hidden="true"></i>
+                </a>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item dropdown active">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><i class="ion ion-person"></i> View Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="ion ion-chatbubbles"></i> Contacts</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="ion ion-email"></i> Mailbox</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="ion ion-gear-b"></i> Settings</a></li>
+                            <li role="separator" class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="ion ion-log-out"></i> Sign out</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Messages</a>
+                        <div class="dropdown-menu dropdown-md">
+
+                            <div class="media-items">
+                                <div class="media">
+                                    <div class="media-left mr-1">
+                                        <a href="#">
+                                            <img class="media-object img-circle" src="../img/avatar-500x500.png" width="38" height="38">
+                                        </a>
+                                    </div>
+                                    <div class="media-body text-muted">
+                                        <p class="media-heading">Linda Miller</p>
+                                        <span class="text-sm">Aenean posuere, tortor sed..</span>
+                                    </div>
+                                </div>
+
+                                <div class="media">
+                                    <div class="media-left mr-1">
+                                        <a href="#">
+                                            <img class="media-object img-circle" src="../img/avatar-500x500-2.png" width="38" height="38">
+                                        </a>
+                                    </div>
+                                    <div class="media-body text-muted">
+                                        <p class="media-heading">Kathie Burton</p>
+                                        <span class="text-sm">Nam pretium turpis et arcu..</span>
+                                    </div>
+                                </div>
+
+                                <div class="media">
+                                    <div class="media-left mr-1">
+                                        <a href="#">
+                                            <img class="media-object img-circle" src="../img/avatar-500x500.png" width="38" height="38">
+                                        </a>
+                                    </div>
+                                    <div class="media-body text-muted">
+                                        <p class="media-heading">Linda Miller</p>
+                                        <span class="text-sm">Aenean posuere, tortor sed..</span>
+                                    </div>
+                                </div>
+
+                                <div class="media">
+                                    <div class="media-left mr-1">
+                                        <a href="#">
+                                            <img class="media-object img-circle" src="../img/avatar-500x500-2.png" width="38" height="38">
+                                        </a>
+                                    </div>
+                                    <div class="media-body text-muted">
+                                        <p class="media-heading">Kathie Burton</p>
+                                        <span class="text-sm">Nam pretium turpis et arcu..</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a class="dropdown-menu-footer" href="#">
+                                View all
+                            </a>
+
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tasks</a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-md last-dropdown">
+
+                            <div class="dropdown-task text-muted">
+                                <div class="pull-right text-sm">50%</div>
+                                Google Chrome Extension
+                                <div class="progress">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+
+                            <div class="dropdown-task text-muted">
+                                <div class="pull-right text-sm">90%</div>
+                                Bootstrap Admin Theme
+                                <div class="progress">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+
+                            <div class="dropdown-task text-muted">
+                                <div class="pull-right text-sm">33%</div>
+                                YouTube Client
+                                <div class="progress">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 33%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+
+                            <div class="dropdown-task text-muted">
+                                <div class="pull-right text-sm">40%</div>
+                                Form Validation
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+
+                            <a class="dropdown-menu-footer" href="#">
+                                View all
+                            </a>
+
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <img src="../img/avatar-500x500.png" alt="Avatar" width="48" height="48" class="avatar img-circle" />
+                        </a>
+                    </li>
                 </ul>
             </div>
+        </nav>
+
+        <div class="content">
+            <header class="page-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-8 page-title-wrapper">
+                            <h1 class="page-title">Paparazzi Protector</h1>
+                            <h2 class="page-subtitle">Mission Control</h2>
+                        </div>
+                        <div class="col-sm-4 d-none d-md-inline-block page-search-wrapper">
+                            <input type="text" class="form-control form-control-lg keyword-search" placeholder="Search for files & reports..">
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+
+            @RenderBody()
         </div>
-    </nav>
-
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2018 | Team Gucci</p>
-        </footer>
     </div>
+    <!-- /#wrapper -->
 
 
-    
 
 
     <environment include="Development">
@@ -73,9 +222,63 @@
                 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
-       
+
     </environment>
+
+
+    <!-- NPM Packages -->
+    <script src="../js/jquery.min.js"></script>
+
+    <script src="../js/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../js/flot/jquery.flot.js"></script>
+    <script src="../js/flot/jquery.flot.resize.js"></script>
+    <script src="../js/flot/jquery.flot.crosshair.js"></script>
+    <script src="../js/flot/jquery.flot.stack.js"></script>
+    <script src="../js/flot/jquery.flot.pie.js"></script>
+    <script src="../js/bxslider/dist/jquery.bxslider.min.js"></script>
+    <script src="../js/jvectormap/jquery-jvectormap.min.js"></script>
+    <script src="../js/moment/min/moment.min.js"></script>
+    <script src="../js/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+    <script src="../js/summernote/dist/summernote.min.js"></script>
+    <script src="../js/fullcalendar/dist/fullcalendar.min.js"></script>
+    <script src="../js/morris.js/morris.min.js"></script>
+    <script src="../js/raphael/raphael.min.js"></script>
+
+    <!-- Vendor -->
+    <script src="../js/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="../js/mark/jquery.mark.min.js"></script>
+    <script src="../js/md-snackbars/md-snackbars.min.js"></script>
+    <script src="../js/zabuto/zabuto_calendar.min.js"></script>
+    <script src="../js/jvectormap/jquery-jvectormap-world-mill.js"></script>
+    <script src="../js/jvectormap/jquery-jvectormap-africa-mill.js"></script>
+    <script src="../js/jvectormap/jquery-jvectormap-asia-mill.js"></script>
+    <script src="../js/jvectormap/jquery-jvectormap-cn-mill.js"></script>
+    <script src="../js/jvectormap/jquery-jvectormap-europe-mill.js"></script>
+    <script src="../js/jvectormap/jquery-jvectormap-in-mill.js"></script>
+    <script src="../js/jvectormap/jquery-jvectormap-north_america-mill.js"></script>
+    <script src="../js/jvectormap/jquery-jvectormap-oceania-mill.js"></script>
+    <script src="../js/jvectormap/jquery-jvectormap-south_america-mill.js"></script>
+    <script src="../js/jvectormap/jquery-jvectormap-uk_countries-mill.js"></script>
+    <script src="../js/jvectormap/jquery-jvectormap-us-aea.js"></script>
+    <script src="../js/gmaps/gmaps.min.js"></script>
+
+    <!-- Theme -->
+    <script src="../js/spark.js"></script>
+    <script src="../js/pages/dashboard.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            Spark.init();
+            Page.init();
+        });
+
+    </script>
+
+
+
 
     @RenderSection("Scripts", required: false)
 </body>
+
 </html>
