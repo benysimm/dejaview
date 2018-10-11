@@ -197,7 +197,7 @@
 
                 var view = new MapView({
                     map: map,
-                    center: [149.137802, -35.313423],
+                    center: [151.27882, -33.8843], //[149.137802, -35.313423],
                     container: "viewDiv",
                     zoom: 16
                 });
@@ -221,7 +221,7 @@
                 //                });
 
 
-                setInterval(refreshMap, 3000);
+                setInterval(refreshMap, 500);
 
                 function getCurrentGpsLocation() {
                     return deviceTestPath.shift();
@@ -318,7 +318,7 @@
 
                             console.log('calculated distance: ' + distance);
 
-                            if (distance < 30) {
+                            if (distance < 5) {
                                 routeData[i].visited = true;
                             }
                         }
@@ -347,7 +347,7 @@
                             console.log('users last visited point was ' + lastVisitedIndex);
                             
                             // else render last visited point plus 2
-                            if (lastVisitedIndex <= i && i <= (lastVisitedIndex + 2)) {
+                            if (lastVisitedIndex < i && i <= (lastVisitedIndex + 2)) {
                                 console.log('rendering a point! ' + i);
 
                                 var point = {
