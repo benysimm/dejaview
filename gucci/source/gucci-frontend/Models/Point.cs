@@ -5,7 +5,7 @@ namespace gucci_frontend.Models
     public class Point
     {
         public int id { get; set; }
-        public float longtitude { get; set; }
-        public float latitude { get; set; }
+        public double longtitude { get; set; }
+        public double latitude { get; set; }
     }
 }
