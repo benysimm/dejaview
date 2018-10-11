@@ -1,0 +1,347 @@
+﻿@{
+    ViewData["Title"] = "Operation 1";
+}
+<div class="page-body">
+    <div class="container-fluid">
+        <div class="page-sidebar toggled sidebar">
+            <nav class="sidebar-collapse d-none d-lg-block">
+                <i class="ion ion-ios-arrow-forward show-on-collapsed"></i>
+                <i class="ion ion-ios-arrow-back hide-on-collapsed"></i>
+            </nav>
+            <ul class="nav nav-pills nav-stacked" id="sidebar-stacked">
+                <li class="d-lg-none">
+                    <a href="#" class="sidebar-close"><i class="ion ion-ios-arrow-left"></i></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-container dropdown-toggle" data-toggle="collapse" data-parent="#sidebar-stacked" href="#p2">
+                        <i class="fa fa-street-view"></i> <span class="nav-text">Current Operations</span>
+                    </a>
+                    <ul class="nav nav-pills nav-stacked open" id="p2">
+                        <li class="nav-item"><a class="nav-link" href="../Operations/Operation1">Honey Badger</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../Operations/Operation2">Yoda</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html"><i class="fa fa-plus"></i> <span class="nav-text">Create Operation</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-container dropdown-toggle" data-toggle="collapse" data-parent="#sidebar-stacked" href="#p3">
+                        <i class="fa fa-history"></i> <span class="nav-text">Past Operations</span>
+                    </a>
+                    <ul class="nav nav-pills nav-stacked collapse" id="p3">
+                        <li class="nav-item"><a class="nav-link" href="../Operations/Operation3">Luke Skywalker</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../Operations/Operation4">Princess Leia</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html"><i class="fa fa-map-signs"></i> <span class="nav-text">Standard Routes</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html"><i class="ion ion-gear-b"></i> <span class="nav-text">Admin</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="page-content">
+            <div class="row">
+                <div class="col-md-9 col-sm-8">
+                    <div class="card card-default widget">
+                        <div class="card-heading">
+                            <div class="card-controls">
+                                <a href="#" class="widget-minify"><i class="fa fa-chevron-up"></i></a>
+                                <a href="#" class="widget-close"><i class="fa fa-times"></i></a>
+                            </div>
+                            <h3 class="card-title">Honey Badger Route</h3>
+                        </div>
+                        <div class="card-body">
+                            <!--ArcGIS test-->
+                            <div style="height: 480px" id="simple-map-div"></div>
+                        </div>
+                    </div>
+                </div><!-- /.col-md-9 -->
+                <div class="col-md-2">
+                    <div class="panel card-default widget widget-messages">
+                        <div class="card-heading">
+                            <div class="card-controls">
+                                <a href="#" class="widget-minify"><i class="fa fa-chevron-up"></i></a>
+                                <a href="#" class="widget-close"><i class="fa fa-times"></i></a>
+                            </div>
+                            <h3 class="card-title">Messages</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="media-items">
+                                <div class="media">
+                                    <div class="media-body mb-3">
+                                        <p class="media-heading weight-regular mb-0">
+                                            Officer 1
+                                            <span class="pull-right text-sm">5m ago</span>
+                                        </p>
+                                        <span class="text-sm text-muted">Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, quam semper libero..</span>
+                                    </div>
+                                </div>
+                                <div class="media">
+                                    <div class="media-body mb-3">
+                                        <p class="media-heading weight-regular mb-0">
+                                            Officer 2
+                                            <span class="pull-right text-sm">15m ago</span>
+                                        </p>
+                                        <span class="text-sm text-muted">Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet..</span>
+                                    </div>
+                                </div>
+                                <div class="media">
+                                    <div class="media-body mb-3">
+                                        <p class="media-heading weight-regular mb-0">
+                                            Officer 1
+                                            <span class="pull-right text-sm">2h ago</span>
+                                        </p>
+                                        <span class="text-sm text-muted">Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, quam semper libero..</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.col-md-4 -->
+
+            </div>
+            <div class="row">
+                <div class="col-md-9 col-sm-8">
+                    <div class="card card-default widget">
+                        <div class="card-heading">
+                            <div class="card-controls">
+                                <a href="#" class="widget-minify"><i class="fa fa-chevron-up"></i></a>
+                                <a href="#" class="widget-close"><i class="fa fa-times"></i></a>
+                            </div>
+                            <h3 class="card-title">Client View</h3>
+                        </div>
+                        <div class="card-body">
+                            <!--ArcGIS test-->
+                            <div style="height: 480px" id="viewDiv"></div>
+                            <div>Lat/Long: <span id="latlong"></span></div>
+                        </div>
+                    </div>
+                </div><!-- /.col-md-9 -->
+                <div class="col-md-2">
+                    <div class="panel card-default widget widget-messages">
+                        <div class="card-heading">
+                            <div class="card-controls">
+                                <a href="#" class="widget-minify"><i class="fa fa-chevron-up"></i></a>
+                                <a href="#" class="widget-close"><i class="fa fa-times"></i></a>
+                            </div>
+                            <h3 class="card-title">Statistics</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="media-items">
+                                <div class="media">
+                                    <div class="media-body mb-3">
+                                        <p class="media-heading weight-regular mb-0">
+                                            Officer 1
+                                            <span class="pull-right text-sm">5m ago</span>
+                                        </p>
+                                        <span class="text-sm text-muted">Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, quam semper libero..</span>
+                                    </div>
+                                </div>
+                                <div class="media">
+                                    <div class="media-body mb-3">
+                                        <p class="media-heading weight-regular mb-0">
+                                            Officer 2
+                                            <span class="pull-right text-sm">15m ago</span>
+                                        </p>
+                                        <span class="text-sm text-muted">Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet..</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.col-md-4 -->
+            </div>
+            <footer class="site-footer text-center">
+                <p>&copy; 2018 Spark</p>
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a href="#">Home</a></li>
+                    <li class="list-inline-item"><a href="#">Support</a></li>
+                    <li class="list-inline-item"><a href="#">FAQ</a></li>
+                    <li class="list-inline-item"><a href="#">Contact</a></li>
+                </ul>
+            </footer>
+        </div>
+        </div>
+</div>
+@section Scripts
+    {
+    <script src="https://js.arcgis.com/4.8/"></script>
+    <script type="text/javascript">
+
+
+
+        require([
+            "esri/Map",
+            "esri/views/MapView",
+            "esri/Graphic",
+            "esri/layers/GraphicsLayer",
+            "esri/tasks/RouteTask",
+            "esri/tasks/support/RouteParameters",
+            "esri/tasks/support/FeatureSet",
+            "esri/core/urlUtils"
+        ], function (Map, MapView, Graphic, GraphicsLayer, RouteTask, RouteParameters, FeatureSet, urlUtils) {
+
+            // Proxy the route requests to avoid prompt for log in
+            //urlUtils.addProxyRule({
+            //    urlPrefix: "route.arcgis.com",
+            //    proxyUrl: "/sproxy/"
+            //});
+
+            // Point the URL to a valid route service
+            var routeTask = new RouteTask({
+                url: "https://route.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World?token=UHRT9utKqjr3B7kf-gFK9Eqe4n0fpXuhw05PsUWE2r5U0VoDyy6wzFlPkVA8Pswm1DG8V0G_gnWaYmhegCIT6eJMX7s25ypGICtHLOJnFOLHq9fJbQNTVx98p66h5OXhxQwCQknq_TfnEwG-EYB4yA.."
+            });
+
+            // The stops and route result will be stored in this layer
+            var routeLayer = new GraphicsLayer();
+
+            // Setup the route parameters
+            var routeParams = new RouteParameters({
+                stops: new FeatureSet(),
+                outSpatialReference: { // autocasts as new SpatialReference()
+                    wkid: 3857
+                }
+            });
+
+            // Define the symbology used to display the stops
+            var stopSymbol = {
+                type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
+                style: "cross",
+                size: 15,
+                outline: { // autocasts as new SimpleLineSymbol()
+                    width: 4
+                }
+            };
+
+            // Define the symbology used to display the route
+            var routeSymbol = {
+                type: "simple-line", // autocasts as SimpleLineSymbol()
+                color: [0, 0, 255, 0.5],
+                width: 5
+            };
+
+            var map = new Map({
+                basemap: "streets", //"streets-navigation-vector"
+                layers: [routeLayer] // Add the route layer to the map
+            });
+
+            var view = new MapView({
+                container: "simple-map-div", // Reference to the scene div created in step 5
+                map: map, // Reference to the map object created before the scene
+                center: [149.137802, -35.313423],
+                zoom: 16
+            });
+
+            // First create a point geometry
+            var point1 = {
+                type: "point",  // autocasts as new Point()
+                latitude: -35.312609,
+                longitude: 149.136368
+            };
+
+            var point2 = {
+                type: "point",  // autocasts as new Point()
+                latitude: -35.313423,
+                longitude: 149.137802
+            };
+
+            var point3 = {
+                type: "point",  // autocasts as new Point()
+                latitude: -35.316067,
+                longitude: 149.135420
+            };
+
+
+
+            // Create a symbol for drawing the point
+            var markerSymbol = {
+                type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
+                color: [226, 119, 40]
+            };
+
+            // Create a graphic and add the geometry and symbol to it
+            var stop1 = new Graphic({
+                geometry: point1,
+                symbol: markerSymbol
+            });
+
+            var stop2 = new Graphic({
+                geometry: point2,
+                symbol: markerSymbol
+            });
+
+            var stop3 = new Graphic({
+                geometry: point3,
+                symbol: markerSymbol
+            });
+
+
+            //var stop = new Graphic(event.mapPoint, stopSymbol);
+            routeLayer.add(stop1);
+            routeParams.stops.features.push(stop1);
+
+            routeLayer.add(stop2);
+            routeParams.stops.features.push(stop2);
+
+            routeLayer.add(stop3);
+            routeParams.stops.features.push(stop3);
+
+            if (routeParams.stops.features.length >= 2) {
+                routeTask.solve(routeParams).then(showRoute);
+                lastStop = routeParams.stops.features.splice(0, 1)[0];
+            }
+
+            function showRoute(data) {
+
+                console.log("calling showRoute");
+
+                var routeResult = data.routeResults[0].route;
+                routeResult.symbol = routeSymbol;
+                routeLayer.add(routeResult);
+            }
+        });
+
+        require([
+                "esri/widgets/Track",
+                "esri/views/MapView",
+                "esri/Map"
+            ], function (
+                Track, MapView, Map
+            ) {
+                    var map = new Map({
+                        basemap: "topo"
+                    });
+
+                    var view = new MapView({
+                        map: map,
+                        container: "viewDiv"
+                    });
+
+                    // Create an instance of the Track widget
+                    // and add it to the view's UI
+                    var track = new Track({
+                        view: view,
+                        id: "client"
+                    });
+                    view.ui.add(track, "top-left");
+
+
+                    // The sample will start tracking your location
+                    // once the view becomes ready
+                    view.when(function () {
+                        track.start();
+                    });
+                });
+
+        function showLocation(position) {
+            var lat = position.coords.latitude;
+            var long = position.coords.longitude;
+            document.getElementById("latlong").innerHTML = lat + " , " + long;
+        }
+
+        navigator.geolocation.getCurrentPosition(showLocation);
+    </script>
+    <script src="../js/pages/generalpage.js"></script>
+}
