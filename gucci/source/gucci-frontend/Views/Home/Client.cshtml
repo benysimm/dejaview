@@ -105,6 +105,7 @@
                             <!--ArcGIS test-->
                             <div style="height: 400px" id="viewDiv"></div>
                         </div>
+                        <div>Lat/Long: <span id="latlong"></span></div>
                     </div>
                 </div><!-- /.col-md-9 -->
             </div>
@@ -151,14 +152,21 @@
                 });
                 view.ui.add(track, "top-left");
 
+
                 // The sample will start tracking your location
                 // once the view becomes ready
                 view.when(function () {
                     track.start();
                 });
             });
-                    //var latlong = Track.track.latlong;
-                    //document.getElementById("latlong").innerHTML(latlong);
+        function showLocation(position) {
+            var lat = position.coords.latitude;
+            var long = position.coords.longitude;
+            document.getElementById("latlong").innerHTML = lat + " , " +long;
+         }
+        
+        navigator.geolocation.getCurrentPosition(showLocation);
+        
     </script>
     <script src="../js/pages/generalpage.js"></script>
 }
