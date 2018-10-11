@@ -127,8 +127,7 @@
     {
     <script src="https://js.arcgis.com/4.9/"></script>
 
-    <script>
-        require([
+    <script>require([
             "esri/widgets/Track",
             "esri/views/MapView",
             "esri/Map"
@@ -164,9 +163,9 @@
             var long = position.coords.longitude;
             document.getElementById("latlong").innerHTML = lat + " , " +long;
          }
-        
-        navigator.geolocation.getCurrentPosition(showLocation);
-        
-    </script>
+
+        //navigator.geolocation.getCurrentPosition(showLocation); //Get once
+        navigator.geolocation.watchPosition(showLocation);      //Poll
+        </script>
     <script src="../js/pages/generalpage.js"></script>
 }
