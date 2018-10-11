@@ -127,7 +127,8 @@
     {
     <script src="https://js.arcgis.com/4.9/"></script>
 
-    <script>require([
+    <script>
+require([
             "esri/widgets/Track",
             "esri/views/MapView",
             "esri/Map"
@@ -158,14 +159,21 @@
                     track.start();
                 });
             });
-        function showLocation(position) {
+
+        function newLocation(position) {
             var lat = position.coords.latitude;
             var long = position.coords.longitude;
             document.getElementById("latlong").innerHTML = lat + " , " +long;
          }
 
+        function errLocation(err){
+            document.getElementById("latlong").innerHTML = err.code + ":" + err.message;
+        }
+
+        var options = {enableHighAccuracy: true, timeout: 5000, maximumAge: 0};
+
         //navigator.geolocation.getCurrentPosition(showLocation); //Get once
-        navigator.geolocation.watchPosition(showLocation);      //Poll
-        </script>
+        navigator.geolocation.watchPosition(newLocation,errLocation,options);      //Poll
+    </script>
     <script src="../js/pages/generalpage.js"></script>
 }
