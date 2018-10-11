@@ -36,6 +36,11 @@ namespace gucci_frontend.Controllers
             return View();
         }
 
+        public IActionResult Client()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
