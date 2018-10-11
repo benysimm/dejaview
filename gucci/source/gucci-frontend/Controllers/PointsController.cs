@@ -35,7 +35,7 @@ public class PointsController : Controller
             {
 
                 connection.Open();
-                String sql = "SELECT Latitude, Longtitude FROM [dbo].[Points] WHERE Id = @id";
+                String sql = "SELECT Latitude, Longitude FROM [dbo].[Points] WHERE Id = @id";
 
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
@@ -49,7 +49,7 @@ public class PointsController : Controller
                             a = new Point() {
                                 id = id,
                                 latitude = reader.GetDouble(0),
-                                longtitude = reader.GetDouble(1)
+                                longitude = reader.GetDouble(1)
                             };
                         }
                     }
