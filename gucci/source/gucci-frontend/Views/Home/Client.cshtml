@@ -192,11 +192,12 @@
                 });
 
                 var deviceTestPath = [];
-
-
-                loadRouteData();
+                var routePoints = [];
 
                 loadDeviceLocations();
+                loadRouteData();
+
+                
             
                 // GPS tracking support
                 //                var track = new Track({
@@ -212,36 +213,51 @@
             
                 setInterval(refreshMap, 5000);
 
+                function getCurrentGpsLocation() {
+                    return deviceTestPath.shift();
+                }
+
                 function refreshMap() {
                     console.log('refreshMap locations.length = ' + deviceTestPath.length);
-
-                    if (deviceTestPath.length === 0) return;
                     
-                    var currentDeviceLocation = deviceTestPath.shift();
+                    var currentDeviceLocation = getCurrentGpsLocation();
+
+                    if (!currentDeviceLocation) return;
+
                     console.log('currentDeviceLocation = ' + currentDeviceLocation.lat + '/' + currentDeviceLocation.long);
                     var point = { type: "point", latitude: currentDeviceLocation.lat, longitude: currentDeviceLocation.long };
-
                     var currentLocationPin = new Graphic({ geometry: point, symbol: bobafettSymbol });
                     currentLocationLayer.removeAll();
                     currentLocationLayer.add(currentLocationPin);
+
+                    // now redraw route pins that are nearby
+                    plotRoutePointsInCloseProximity(currentDeviceLocation);
+                }
+
+                function plotRoutePointsInCloseProximity(currentLocation) {
+                    var stopsList = getStops(routePoints);
+
+                    routeParams.stops.features = [];
+                    routeLayer.removeAll();
+
+                    for (var i = 0; i < stopsList.length; i++) {
+                        console.log('stopsList.symbol: ' + stopsList[i].symbol.type);
+                        routeParams.stops.features.push(stopsList[i]);
+                        routeLayer.add(stopsList[i]);
+                    }
+
+                    if (routeParams.stops.features.length >= 2) {
+                        routeTask.solve(routeParams).then(showRoute);
+                        lastStop = routeParams.stops.features.splice(0, 1)[0];
+                    }
                 }
             
                 // Call the server for a list of lat/long coordinates that defines the route
                 function loadRouteData() {
                     $.getJSON("/data/client-route-data.json")
                         .done(function (routeData) {
-                            var stopsList = getStops(routeData);
-
-                            for (var i = 0; i < stopsList.length; i++) {
-                                console.log('stopsList.symbol: ' + stopsList[i].symbol.type);
-                                routeParams.stops.features.push(stopsList[i]);
-                                routeLayer.add(stopsList[i]);
-                            }
-
-                            if (routeParams.stops.features.length >= 2) {
-                                routeTask.solve(routeParams).then(showRoute);
-                                lastStop = routeParams.stops.features.splice(0, 1)[0];
-                            }
+                            routePoints = routeData;
+                            plotRoutePointsInCloseProximity();
                         })
                         .fail(function (jqxhr, textStatus, error) {
                             var err = textStatus + ", " + error;
@@ -293,6 +309,24 @@
                             var err = textStatus + ", " + error;
                             console.log("Request failed: " + err);
                         });
+                }
+
+                function getDistanceFromLatLonInMeters(lat1,lon1,lat2,lon2) {
+                    var R = 6371; // Radius of the earth in km
+                    var dLat = deg2rad(lat2-lat1);  // deg2rad below
+                    var dLon = deg2rad(lon2-lon1); 
+                    var a = 
+                            Math.sin(dLat/2) * Math.sin(dLat/2) +
+                                Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+                                Math.sin(dLon/2) * Math.sin(dLon/2)
+                        ; 
+                    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+                    var d = R * c * 1000; // Distance in m
+                    return d;
+                }
+
+                function deg2rad(deg) {
+                    return deg * (Math.PI/180)
                 }
             });
 
