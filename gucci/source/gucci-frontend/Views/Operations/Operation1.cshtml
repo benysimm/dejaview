@@ -170,6 +170,13 @@
     <script src="https://js.arcgis.com/4.8/"></script>
     <script type="text/javascript">
 
+        async function getPoint(id) {
+            const response = await fetch("/api/points/" + id, {});
+            const json = await response.json();
+            console.log(json);
+            return json;
+        }
+
 
 
         require([
@@ -182,6 +189,29 @@
             "esri/tasks/support/FeatureSet",
             "esri/core/urlUtils"
         ], function (Map, MapView, Graphic, GraphicsLayer, RouteTask, RouteParameters, FeatureSet, urlUtils) {
+
+            // Creates a new point geometry object based on the json data object
+            // then creates a new marker with that points data
+            // then adds it to the supplied graphics layer
+            function addPoint(data, routeLayer, routeParams) {
+                var point = {
+                    type: "point",  // autocasts as new Point()
+                    latitude: data.latitude,
+                    longitude: data.longitude
+                };
+                var stop = new Graphic({
+                    geometry: point,
+                    symbol: markerSymbol
+                });
+                routeLayer.add(stop);
+                routeParams.stops.features.push(stop);
+            }
+
+            function getRoute() {
+                // add code here later when route api is done
+
+
+            }
 
             // Proxy the route requests to avoid prompt for log in
             //urlUtils.addProxyRule({
@@ -227,31 +257,13 @@
                 layers: [routeLayer] // Add the route layer to the map
             });
 
+
             var view = new MapView({
                 container: "simple-map-div", // Reference to the scene div created in step 5
                 map: map, // Reference to the map object created before the scene
                 center: [149.137802, -35.313423],
                 zoom: 16
             });
-
-            // First create a point geometry
-            var point1 = {
-                type: "point",  // autocasts as new Point()
-                latitude: -35.312609,
-                longitude: 149.136368
-            };
-
-            var point2 = {
-                type: "point",  // autocasts as new Point()
-                latitude: -35.313423,
-                longitude: 149.137802
-            };
-
-            var point3 = {
-                type: "point",  // autocasts as new Point()
-                latitude: -35.316067,
-                longitude: 149.135420
-            };
 
 
 
@@ -261,37 +273,31 @@
                 color: [226, 119, 40]
             };
 
-            // Create a graphic and add the geometry and symbol to it
-            var stop1 = new Graphic({
-                geometry: point1,
-                symbol: markerSymbol
-            });
+            // ugly promise chain to ensure all points are returned before attempign to solve the route
+            // needs to be tweaked but it works
+            // also currently hardcoded to grab the first 3 points in the database
+            getPoint(1).then(data => {
+                addPoint(data, routeLayer, routeParams);
+            }).then(() =>
 
-            var stop2 = new Graphic({
-                geometry: point2,
-                symbol: markerSymbol
-            });
+                getPoint(2).then(data => {
+                    addPoint(data, routeLayer, routeParams);
+                })).then(() =>
 
-            var stop3 = new Graphic({
-                geometry: point3,
-                symbol: markerSymbol
-            });
+                    getPoint(3).then(data => {
+                        addPoint(data, routeLayer, routeParams);
 
 
-            //var stop = new Graphic(event.mapPoint, stopSymbol);
-            routeLayer.add(stop1);
-            routeParams.stops.features.push(stop1);
+                })).then(() => {
 
-            routeLayer.add(stop2);
-            routeParams.stops.features.push(stop2);
+                    routeTask.solve(routeParams).then(showRoute);
+                    lastStop = routeParams.stops.features.splice(0, 1)[0];
 
-            routeLayer.add(stop3);
-            routeParams.stops.features.push(stop3);
+                }
+            );
 
-            if (routeParams.stops.features.length >= 2) {
-                routeTask.solve(routeParams).then(showRoute);
-                lastStop = routeParams.stops.features.splice(0, 1)[0];
-            }
+
+
 
             function showRoute(data) {
 
@@ -335,13 +341,20 @@
                     });
                 });
 
-        function showLocation(position) {
+        function newLocation(position) {
             var lat = position.coords.latitude;
             var long = position.coords.longitude;
             document.getElementById("latlong").innerHTML = lat + " , " + long;
         }
 
-        navigator.geolocation.getCurrentPosition(showLocation);
-    </script>
+        function errLocation(err) {
+            document.getElementById("latlong").innerHTML = err.code + ":" + err.message;
+        }
+
+        var options = { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 };
+
+        //navigator.geolocation.getCurrentPosition(showLocation); //Get once
+        navigator.geolocation.watchPosition(newLocation, errLocation, options);      //Poll
+        </script>
     <script src="../js/pages/generalpage.js"></script>
 }

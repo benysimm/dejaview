@@ -124,23 +124,34 @@
 
 
 @section Scripts
-    {
+{
     <script src="https://js.arcgis.com/4.9/"></script>
 
     <script>
         require([
-            "esri/widgets/Track",
-            "esri/views/MapView",
-            "esri/Map",
-            "esri/Graphic",
-            "esri/layers/GraphicsLayer",
-            "esri/tasks/RouteTask",
-            "esri/tasks/support/RouteParameters",
-            "esri/tasks/support/FeatureSet",
-            "esri/core/urlUtils"
-        ], function (
-            Track, MapView, Map, Graphic, GraphicsLayer, RouteTask, RouteParameters, FeatureSet, urlUtils
-        ) {
+                "esri/widgets/Track",
+                "esri/views/MapView",
+                "esri/Map",
+                "esri/Graphic",
+                "esri/layers/GraphicsLayer",
+                "esri/tasks/RouteTask",
+                "esri/tasks/support/RouteParameters",
+                "esri/tasks/support/FeatureSet",
+                "esri/symbols/PictureMarkerSymbol",
+                "esri/core/urlUtils"
+            ],
+            function(
+                Track,
+                MapView,
+                Map,
+                Graphic,
+                GraphicsLayer,
+                RouteTask,
+                RouteParameters,
+                FeatureSet,
+                PictureMarkerSymbol,
+                urlUtils
+            ) {
 
                 var routeSymbol = {
                     type: "simple-line", // autocasts as SimpleLineSymbol()
@@ -148,9 +159,25 @@
                     width: 5
                 };
 
+                var markerSymbol = {
+                    type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
+                    color: [226, 119, 40]
+                };
+
+                var bobafettSymbol = {
+                    type: "picture-marker", // autocasts as new PictureMarkerSymbol()
+                    url: "/img/bobafett-32x32.png",
+                    width: "32px",
+                    height: "32px"
+                };
+
                 var routeTask = new RouteTask({
-                    url: "https://route.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World?token=UHRT9utKqjr3B7kf-gFK9Eqe4n0fpXuhw05PsUWE2r5U0VoDyy6wzFlPkVA8Pswm1DG8V0G_gnWaYmhegCIT6eJMX7s25ypGICtHLOJnFOLHq9fJbQNTVx98p66h5OXhxQwCQknq_TfnEwG-EYB4yA.."
+                    url:
+                        "https://route.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World?token=UHRT9utKqjr3B7kf-gFK9Eqe4n0fpXuhw05PsUWE2r5U0VoDyy6wzFlPkVA8Pswm1DG8V0G_gnWaYmhegCIT6eJMX7s25ypGICtHLOJnFOLHq9fJbQNTVx98p66h5OXhxQwCQknq_TfnEwG-EYB4yA.."
                 });
+
+                // The current GPS location will be rendered in this layer
+                var currentLocationLayer = new GraphicsLayer();
 
                 // The stops and route result will be stored in this layer
                 var routeLayer = new GraphicsLayer();
@@ -163,16 +190,9 @@
                     }
                 });
 
-                // Define the symbology used to display the route
-                var routeSymbol = {
-                    type: "simple-line", // autocasts as SimpleLineSymbol()
-                    color: [0, 0, 255, 0.5],
-                    width: 5
-                };
-
                 var map = new Map({
                     basemap: "topo",
-                    layers: [routeLayer] // Add the route layer to the map
+                    layers: [routeLayer, currentLocationLayer] // Add the route layer to the map
                 });
 
                 var view = new MapView({
@@ -182,95 +202,85 @@
                     zoom: 16
                 });
 
+                var deviceTestPath = [];
+                var routePoints = [];
 
-                /*
-                 * -35.312709, 149.136369
-                 *
-                 *
-                 */
+                loadDeviceLocations();
+                loadRouteData();
 
-                /*
-                    // First create a point geometry
-                    var point1 = {
-                        type: "point",  // autocasts as new Point()
-                        latitude: -35.312609,
-                        longitude: 149.136368
-                    };
 
-                    var point2 = {
-                        type: "point",  // autocasts as new Point()
-                        latitude: -35.313423,
-                        longitude: 149.137802
-                    };
+                // GPS tracking support
+                //                var track = new Track({
+                //                    view: view,
+                //                    id: "client"
+                //                });
+                //                view.ui.add(track, "top-left");
+                //
+                //                view.when(function () {
+                //                    track.start();
+                //                });
 
-                    var point3 = {
-                        type: "point",  // autocasts as new Point()
-                        latitude: -35.316067,
-                        longitude: 149.135420
-                    };
 
-                    // Create a symbol for drawing the point
-                    var markerSymbol = {
-                        type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
-                        color: [226, 119, 40]
-                    };
-                    */
+                setInterval(refreshMap, 3000);
 
-                // Create a graphic and add the geometry and symbol to it
-                /*
-                    var stop1 = new Graphic({
-                        geometry: point1,
-                        symbol: markerSymbol
-                    });
-
-                    var stop2 = new Graphic({
-                        geometry: point2,
-                        symbol: markerSymbol
-                    });
-
-                    var stop3 = new Graphic({
-                        geometry: point3,
-                        symbol: markerSymbol
-                    });
-
-                    routeLayer.add(stop1);
-                    routeParams.stops.features.push(stop1);
-
-                    routeLayer.add(stop2);
-                    routeParams.stops.features.push(stop2);
-
-                    routeLayer.add(stop3);
-                    routeParams.stops.features.push(stop3);
-                */
-                var stopsList = getStops();
-
-                console.log('stopsList length: ' + stopsList.length);
-
-                for (var i = 0; i < stopsList.length; i++) {
-                    console.log('stop: ' + stopsList[i]);
-                    routeParams.stops.features.push(stopsList[i]);
+                function getCurrentGpsLocation() {
+                    return deviceTestPath.shift();
                 }
 
-                if (routeParams.stops.features.length >= 2) {
-                    routeTask.solve(routeParams).then(showRoute);
-                    lastStop = routeParams.stops.features.splice(0, 1)[0];
+                function refreshMap() {
+                    console.log('refreshMap locations.length = ' + deviceTestPath.length);
+
+                    var currentDeviceLocation = getCurrentGpsLocation();
+
+                    if (!currentDeviceLocation) return;
+
+                    console.log('currentDeviceLocation = ' +
+                        currentDeviceLocation.lat +
+                        '/' +
+                        currentDeviceLocation.long);
+                    var point = {
+                        type: "point",
+                        latitude: currentDeviceLocation.lat,
+                        longitude: currentDeviceLocation.long
+                    };
+                    var currentLocationPin = new Graphic({ geometry: point, symbol: bobafettSymbol });
+                    currentLocationLayer.removeAll();
+                    currentLocationLayer.add(currentLocationPin);
+
+                    // now redraw route pins that are nearby
+                    plotRoutePointsInCloseProximity(currentDeviceLocation);
                 }
 
-                // Create an instance of the Track widget
-                // and add it to the view's UI
-                var track = new Track({
-                    view: view,
-                    id: "client"
-                });
-                view.ui.add(track, "top-left");
+                function plotRoutePointsInCloseProximity(currentLocation) {
+                    var stopsList = getStops(routePoints, currentLocation);
+                    routeParams.stops.features = [];
+                    routeLayer.removeAll();
 
+                    for (var i = 0; i < stopsList.length; i++) {
+                        routeParams.stops.features.push(stopsList[i]);
+                        routeLayer.add(stopsList[i]);
+                    }
 
-                // The sample will start tracking your location
-                // once the view becomes ready
-                view.when(function () {
-                    track.start();
-                });
+                    if (routeParams.stops.features.length >= 2) {
+                        routeTask.solve(routeParams).then(showRoute);
+                        lastStop = routeParams.stops.features.splice(0, 1)[0];
+                    }
+                }
 
+                // Call the server for a list of lat/long coordinates that defines the route
+                function loadRouteData() {
+                    $.getJSON("/data/client-route-data.json")
+                        .done(function(routeData) {
+                            routePoints = routeData;
+                            plotRoutePointsInCloseProximity();
+                        })
+                        .fail(function(jqxhr, textStatus, error) {
+                            var err = textStatus + ", " + error;
+                            console.log("Request failed: " + err);
+                        });
+                }
+
+                // Callback for once the route is computed, to plot the result
                 function showRoute(data) {
                     console.log("calling showRoute");
                     var routeResult = data.routeResults[0].route;
@@ -278,53 +288,120 @@
                     routeLayer.add(routeResult);
                 }
 
-                function getStops() {
-                    // First create a point geometry
-                    var point1 = {
-                        type: "point",  // autocasts as new Point()
-                        latitude: -35.312609,
-                        longitude: 149.136368
-                    };
-
-                    var point2 = {
-                        type: "point",  // autocasts as new Point()
-                        latitude: -35.313423,
-                        longitude: 149.137802
-                    };
-
-                    var point3 = {
-                        type: "point",  // autocasts as new Point()
-                        latitude: -35.316067,
-                        longitude: 149.135420
-                    };
-
-                    // Create a symbol for drawing the point
-                    var markerSymbol = {
-                        type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
-                        color: [226, 119, 40]
-                    };
-
+                // Given a list of simple lat/longs, turn them into a list of ArcGIS points for plotting
+                function getStops(routeData, currentLocation) {
                     var stopsList = [];
+                    console.log('routeData.length = ' + routeData.length);
 
 
-                    // Create a graphic and add the geometry and symbol to it
-                    stopsList.push(new Graphic({
-                        geometry: point1,
-                        symbol: markerSymbol
-                    }));
+                    var lastVisitedIndex = -1;
 
-                    stopsList.push(new Graphic({
-                        geometry: point2,
-                        symbol: markerSymbol
-                    }));
+                    for (var i = 0; i < routeData.length; i++) {
+                        if (routeData[i].visited === true) {
+                            lastVisitedIndex = i;
+                        }
+                    }
 
-                    stopsList.push(new Graphic({
-                        geometry: point3,
-                        symbol: markerSymbol
-                    }));
+                    for (var i = 0; i < routeData.length; i++) {
+                        console.log('adding route point id: ' +
+                            routeData[i].id +
+                            ' lat/long: ' +
+                            routeData[i].lat +
+                            "/" +
+                            routeData[i].long);
+
+                        if (currentLocation) {
+                            var distance = getDistanceFromLatLonInMeters(currentLocation.lat,
+                                currentLocation.long,
+                                routeData[i].lat,
+                                routeData[i].long);
+
+                            console.log('calculated distance: ' + distance);
+
+                            if (distance < 30) {
+                                routeData[i].visited = true;
+                            }
+                        }
+
+                        //if (500 < windowsize && windowsize < 600)
+
+
+                        if (lastVisitedIndex === -1) {
+                            console.log('user has NOT visited any points, render first 2');
+                            // render first 2 points
+                            if (0 <= i && i < 2) {
+                                console.log('rendering a point!');
+
+                                var point = {
+                                    type: "point",
+                                    latitude: routeData[i].lat,
+                                    longitude: routeData[i].long
+                                };
+
+                                stopsList.push(new Graphic({
+                                    geometry: point,
+                                    symbol: markerSymbol
+                                }));
+                            }
+                        } else {
+                            console.log('users last visited point was ' + lastVisitedIndex);
+
+                            // else render last visited point plus 2
+                            if (i <= (lastVisitedIndex + 2)) {
+                                console.log('rendering a point! ' + i);
+
+                                var point = {
+                                    type: "point",
+                                    latitude: routeData[i].lat,
+                                    longitude: routeData[i].long
+                                };
+
+                                stopsList.push(new Graphic({
+                                    geometry: point,
+                                    symbol: markerSymbol
+                                }));
+                            }
+                        }
+                    }
 
                     return stopsList;
+                }
 
+                // Get the GPS lat/long coordindates of the device (for demo mode this is faked)
+                function loadDeviceLocations() {
+                    $.getJSON("/data/fake-gps-coordinates.json")
+                        .done(function(deviceLocations) {
+                            deviceTestPath = deviceLocations;
+                            for (var i = 0; i < deviceLocations.length; i++) {
+                                console.log('deviceLocations lat/long: ' +
+                                    deviceLocations[i].lat +
+                                    '/' +
+                                    deviceLocations[i].long);
+                            }
+                        })
+                        .fail(function(jqxhr, textStatus, error) {
+                            var err = textStatus + ", " + error;
+                            console.log("Request failed: " + err);
+                        });
+                }
+
+                function getDistanceFromLatLonInMeters(lat1, lon1, lat2, lon2) {
+                    var R = 6371; // Radius of the earth in km
+                    var dLat = deg2rad(lat2 - lat1); // deg2rad below
+                    var dLon = deg2rad(lon2 - lon1);
+                    var a =
+                        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                            Math.cos(deg2rad(lat1)) *
+                            Math.cos(deg2rad(lat2)) *
+                            Math.sin(dLon / 2) *
+                            Math.sin(dLon / 2);
+                    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+                    var d = R * c * 1000; // Distance in m
+                    return d;
+                }
+
+                function deg2rad(deg) {
+                    return deg * (Math.PI / 180)
                 }
             });
 
@@ -341,7 +418,7 @@
         var options = { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 };
 
         //navigator.geolocation.getCurrentPosition(showLocation); //Get once
-        navigator.geolocation.watchPosition(newLocation, errLocation, options);      //Poll
+        navigator.geolocation.watchPosition(newLocation, errLocation, options); //Poll
     </script>
     <script src="../js/pages/generalpage.js"></script>
 }
