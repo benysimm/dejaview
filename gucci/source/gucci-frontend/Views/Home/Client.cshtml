@@ -191,7 +191,7 @@
                 });
 
                 var map = new Map({
-                    basemap: "topo",
+                    basemap: "streets-navigation-vector", /*https://developers.arcgis.com/javascript/latest/api-reference/esri-Map.html#basemap*/
                     layers: [routeLayer, currentLocationLayer] // Add the route layer to the map
                 });
 
@@ -345,9 +345,9 @@
                             }
                         } else {
                             console.log('users last visited point was ' + lastVisitedIndex);
-
+                            
                             // else render last visited point plus 2
-                            if (i <= (lastVisitedIndex + 2)) {
+                            if (lastVisitedIndex <= i && i <= (lastVisitedIndex + 2)) {
                                 console.log('rendering a point! ' + i);
 
                                 var point = {
