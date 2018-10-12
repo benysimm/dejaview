@@ -17,7 +17,7 @@ namespace gucci_frontend.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("Operation1", "Operations");
         }
 
         public IActionResult About()
