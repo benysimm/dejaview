@@ -3,7 +3,44 @@
 }
 <div class="page-body">
     <div class="container-fluid">
-        @Html.Partial("_SideBar")
+        <div class="page-sidebar toggled sidebar">
+            <nav class="sidebar-collapse d-none d-lg-block">
+                <i class="ion ion-ios-arrow-forward show-on-collapsed"></i>
+                <i class="ion ion-ios-arrow-back hide-on-collapsed"></i>
+            </nav>
+            <ul class="nav nav-pills nav-stacked" id="sidebar-stacked">
+                <li class="d-lg-none">
+                    <a href="#" class="sidebar-close"><i class="ion ion-ios-arrow-left"></i></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-container dropdown-toggle" data-toggle="collapse" data-parent="#sidebar-stacked" href="#p2">
+                        <i class="fa fa-street-view"></i> <span class="nav-text">Current Operations</span>
+                    </a>
+                    <ul class="nav nav-pills nav-stacked open" id="p2">
+                        <li class="nav-item"><a class="nav-link" href="../Operations/Operation1">Honey Badger</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../Operations/Operation2">Yoda</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html"><i class="fa fa-plus"></i> <span class="nav-text">Create Operation</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-container dropdown-toggle" data-toggle="collapse" data-parent="#sidebar-stacked" href="#p3">
+                        <i class="fa fa-history"></i> <span class="nav-text">Past Operations</span>
+                    </a>
+                    <ul class="nav nav-pills nav-stacked collapse" id="p3">
+                        <li class="nav-item"><a class="nav-link" href="../Operations/Operation3">Luke Skywalker</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../Operations/Operation4">Princess Leia</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html"><i class="fa fa-map-signs"></i> <span class="nav-text">Standard Routes</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html"><i class="ion ion-gear-b"></i> <span class="nav-text">Admin</span></a>
+                </li>
+            </ul>
+        </div>
         <div class="page-content">
             <div class="row">
                 <div class="col-md-10 col-sm-9">
@@ -24,7 +61,7 @@
                                 <button type="button" class="btn btn-default" id="planC">Plan C</button>
                                 <br /><br />
                                 <button type="button" class="btn btn-danger" id="planX">Abort</button>
-                                <div id="planNumber">planA</div>
+                                <div id="planNumber" style="color:white">planA</div>
                             </div>
                             <!--ArcGIS test-->
                             <div style="height: 480px; float:left; width:90%" id="simple-map-div"></div>
@@ -157,7 +194,7 @@
         async function getPoint(id) {
             const response = await fetch("/api/points/" + id, {});
             const json = await response.json();
-            console.log(json);
+            //console.log(json);
             return json;
         }
 
@@ -172,6 +209,8 @@
             "esri/core/urlUtils"
         ], function (Map, MapView, Graphic, GraphicsLayer, RouteTask, RouteParameters, FeatureSet, urlUtils) {
 
+            var routeLayer = new GraphicsLayer();
+
             document.getElementById("planA").onclick = function () { setNewPlan("planA"); }
             document.getElementById("planB").onclick = function () { setNewPlan("planB"); }
             document.getElementById("planC").onclick = function () { setNewPlan("planC"); }
@@ -179,18 +218,65 @@
 
             function setNewPlan(plan) {
                 setButtonColour(plan);
-                getPoint(1).then(data => {
-                    addPoint(data, routeLayer, routeParams);
-                }).then(() =>
-                    getPoint(2).then(data => {
-                        addPoint(data, routeLayer, routeParams);
-                    })).then(() =>
-                        getPoint(3).then(data => {
+                if (plan == "planB") {
+                    routeLayer.removeAll();
+                    getPoint(265).then(data => {
                             addPoint(data, routeLayer, routeParams);
-                        })).then(() => {
-                            routeTask.solve(routeParams).then(showRoute);
-                            lastStop = routeParams.stops.features.splice(0, 1)[0];
-                        });
+                        }).then(() =>
+                        getPoint(266).then(data => {
+                            addPoint(data, routeLayer, routeParams);
+                        })).then(() =>
+                            getPoint(268).then(data => {
+                                addPoint(data, routeLayer, routeParams);
+                            })).then(() =>
+                                getPoint(269).then(data => {
+                                    addPoint(data, routeLayer, routeParams);
+                                })).then(() => {
+                                    routeTask.solve(routeParams).then(showRoute);
+                                    lastStop = routeParams.stops.features.splice(0, 1)[0];
+                                }
+                            );
+
+                }
+                if (plan == "planC" || plan == "planA")
+                {
+                    routeLayer.removeAll();
+                    getPoint(261).then(data => {
+                        addPoint(data, routeLayer, routeParams);
+                    }).then(() =>
+                        getPoint(262).then(data => {
+                            addPoint(data, routeLayer, routeParams);
+                        })).then(() =>
+                            getPoint(263).then(data => {
+                                addPoint(data, routeLayer, routeParams);
+                            })).then(() =>
+                                getPoint(264).then(data => {
+                                    addPoint(data, routeLayer, routeParams);
+                                })).then(() => {
+                                    routeTask.solve(routeParams).then(showRoute);
+                                    lastStop = routeParams.stops.features.splice(0, 1)[0];
+                                }
+                                );
+                }
+                if (plan == "planX") {
+                    routeLayer.removeAll();
+                    getPoint(273).then(data => {
+                        addPoint(data, routeLayer, routeParams);
+                    }).then(() =>
+                        getPoint(272).then(data => {
+                            addPoint(data, routeLayer, routeParams);
+                        })).then(() =>
+                            getPoint(271).then(data => {
+                                addPoint(data, routeLayer, routeParams);
+                            })).then(() =>
+                                getPoint(270).then(data => {
+                                    addPoint(data, routeLayer, routeParams);
+                                })).then(() => {
+                                    routeTask.solve(routeParams).then(showRoute);
+                                    lastStop = routeParams.stops.features.splice(0, 1)[0];
+                                }
+                                );
+                }
 
             };
 
@@ -210,7 +296,7 @@
                 routeLayer.add(stop);
                 routeParams.stops.features.push(stop);
             }
-
+          
             function getRoute() {
                 // add code here later when route api is done
 
@@ -229,7 +315,7 @@
             });
 
             // The stops and route result will be stored in this layer
-            var routeLayer = new GraphicsLayer();
+            routeLayer = new GraphicsLayer();
 
             // Setup the route parameters
             var routeParams = new RouteParameters({
@@ -265,9 +351,10 @@
             var view = new MapView({
                 container: "simple-map-div", // Reference to the scene div created in step 5
                 map: map, // Reference to the map object created before the scene
-                center: [151.27882, -33.8843],
+                center: [151.274034, -33.887742],
                 zoom: 16
             });
+
 
             // Create a symbol for drawing the point
             var markerSymbol = {
@@ -290,7 +377,7 @@
       // Create a symbol for rendering the graphic
       var fillSymbol = {
         type: "simple-fill", // autocasts as new SimpleFillSymbol()
-        color: [255, 50, 50, 0.8],
+        color: [255, 0, 0, 0.8],
         outline: { // autocasts as new SimpleLineSymbol()
           color: [255, 255, 255],
           width: 1
@@ -301,36 +388,66 @@
       var polygonGraphic = new Graphic({
         geometry: polygon,
         symbol: fillSymbol
-      });
-        view.graphics.add(polygonGraphic);
+            });
+
+            var point1 = {
+                type : "point",
+                latitude: -33.885458,
+                longitude: 151.273620
+            };
+
+            var point2 = {
+                type: "point",
+                latitude: -33.890817,
+                longitude: 151.272739
+            };
+
+            var markerSymbol1 = {
+                type: "simple-marker",
+                color: [0,255,0],
+                outline: {
+                    color: [255, 255, 255],
+                    width: 2
+                }
+            };
+
+      var officer1 = new Graphic({
+            geometry: point1,
+            symbol: markerSymbol1
+            });
+
+            var officer2 = new Graphic({
+                geometry: point2,
+                symbol: markerSymbol1
+            });
+        
+
+            view.graphics.add(polygonGraphic);
+            view.graphics.add(officer1);
+            view.graphics.add(officer2);
 
             // ugly promise chain to ensure all points are returned before attempign to solve the route
             // needs to be tweaked but it works
             // also currently hardcoded to grab the first 3 points in the database
-            getPoint(1).then(data => {
+            getPoint(261).then(data => {
                 addPoint(data, routeLayer, routeParams);
-            }).then(() =>
-
-                getPoint(2).then(data => {
+                }).then(() =>
+                getPoint(262).then(data => {
                     addPoint(data, routeLayer, routeParams);
                 })).then(() =>
-
-                    getPoint(3).then(data => {
+                    getPoint(263).then(data => {
                         addPoint(data, routeLayer, routeParams);
-
-
-                })).then(() => {
-
-                    routeTask.solve(routeParams).then(showRoute);
-                    lastStop = routeParams.stops.features.splice(0, 1)[0];
-
-                }
-            );
+                    })).then(() =>
+                        getPoint(264).then(data => {
+                            addPoint(data, routeLayer, routeParams);
+                        })).then(() => {
+                            routeTask.solve(routeParams).then(showRoute);
+                            lastStop = routeParams.stops.features.splice(0, 1)[0];
+                        }
+                    );
 
             function showRoute(data) {
-
                 console.log("calling showRoute");
-
                 var routeResult = data.routeResults[0].route;
                 routeResult.symbol = routeSymbol;
                 routeLayer.add(routeResult);
