@@ -172,8 +172,7 @@
                 };
 
                 var routeTask = new RouteTask({
-                    url:
-                        "https://route.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World?token=bthmi3Ncqnp5Ery-we_6XZrlk3cIgTs5YBQpgvlo5KNDfTbThnspaYMMjTzEnVUv0EZzyKyYVbkFwTM0csmrGJUxj3bt4s0sGUBDfGZt3o0_E8Ee1RD3pw0tjpWmvWPn--0T1rSnBnNbXEsDimwfNQ.."
+                    url: "https://route.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World?token=bthmi3Ncqnp5Ery-we_6XZrlk3cIgTs5YBQpgvlo5KNDfTbThnspaYMMjTzEnVUv0EZzyKyYVbkFwTM0csmrGJUxj3bt4s0sGUBDfGZt3o0_E8Ee1RD3pw0tjpWmvWPn--0T1rSnBnNbXEsDimwfNQ.."
                 });
 
                 // The current GPS location will be rendered in this layer
@@ -221,7 +220,7 @@
                 //                });
 
 
-                setInterval(refreshMap, 500);
+                setInterval(refreshMap, 3000);
 
                 function getCurrentGpsLocation() {
                     return deviceTestPath.shift();
@@ -347,7 +346,7 @@
                             console.log('users last visited point was ' + lastVisitedIndex);
                             
                             // else render last visited point plus 2
-                            if (lastVisitedIndex < i && i <= (lastVisitedIndex + 2)) {
+                            if (lastVisitedIndex <= i && i <= (lastVisitedIndex + 2)) {
                                 console.log('rendering a point! ' + i);
 
                                 var point = {

@@ -1,1170 +1,150 @@
 [
   {
-    "lat": -33.8843,
-    "long": 151.27882,
-    "course": 90,
-    "distanceKm": 0,
-    "distanceIntervalMeters": "",
-    "Compass": "E"
+    "lat": -33.88788,
+    "long": 151.27571
   },
   {
-    "lat": -33.8843,
-    "long": 151.27883,
-    "course": 90,
-    "distanceKm": 0.001,
-    "distanceIntervalMeters": 0.93,
-    "Compass": "E"
+    "lat": -33.88756,
+    "long": 151.27523
   },
   {
-    "lat": -33.88431,
-    "long": 151.27891,
-    "course": 98.6,
-    "distanceKm": 0.008,
-    "distanceIntervalMeters": 7.48,
-    "Compass": "E"
+    "lat": -33.88617,
+    "long": 151.27312
   },
   {
-    "lat": -33.88439,
-    "long": 151.27945,
-    "course": 100.1,
-    "distanceKm": 0.059,
-    "distanceIntervalMeters": 50.74,
-    "Compass": "E"
+    "lat": -33.88623,
+    "long": 151.27307
   },
   {
-    "lat": -33.8844,
-    "long": 151.27954,
-    "course": 97.6,
-    "distanceKm": 0.068,
-    "distanceIntervalMeters": 8.4,
-    "Compass": "E"
-  },
-  {
-    "lat": -33.88448,
-    "long": 151.27956,
-    "course": 168.3,
-    "distanceKm": 0.077,
-    "distanceIntervalMeters": 9.06,
-    "Compass": "E"
-  },
-  {
-    "lat": -33.88452,
-    "long": 151.27959,
-    "course": 148.1,
-    "distanceKm": 0.082,
-    "distanceIntervalMeters": 5.23,
-    "Compass": "SSE"
-  },
-  {
-    "lat": -33.88454,
-    "long": 151.2796,
-    "course": 157.5,
-    "distanceKm": 0.084,
-    "distanceIntervalMeters": 2.4,
-    "Compass": "SE"
-  },
-  {
-    "lat": -33.88456,
-    "long": 151.2796,
-    "course": 180,
-    "distanceKm": 0.086,
-    "distanceIntervalMeters": 2.22,
-    "Compass": "SSE"
-  },
-  {
-    "lat": -33.88457,
-    "long": 151.2796,
-    "course": 180,
-    "distanceKm": 0.088,
-    "distanceIntervalMeters": 1.11,
-    "Compass": "S"
-  },
-  {
-    "lat": -33.88461,
-    "long": 151.27959,
-    "course": 191.7,
-    "distanceKm": 0.092,
-    "distanceIntervalMeters": 4.53,
-    "Compass": "S"
-  },
-  {
-    "lat": -33.88466,
-    "long": 151.27958,
-    "course": 189.4,
-    "distanceKm": 0.098,
-    "distanceIntervalMeters": 5.62,
-    "Compass": "S"
-  },
-  {
-    "lat": -33.88497,
-    "long": 151.27949,
-    "course": 193.6,
-    "distanceKm": 0.133,
-    "distanceIntervalMeters": 35.38,
-    "Compass": "S"
-  },
-  {
-    "lat": -33.88504,
-    "long": 151.27948,
-    "course": 186.8,
-    "distanceKm": 0.141,
-    "distanceIntervalMeters": 7.82,
-    "Compass": "S"
-  },
-  {
-    "lat": -33.8849,
-    "long": 151.27793,
-    "course": 276.2,
-    "distanceKm": 0.285,
-    "distanceIntervalMeters": 144.23,
-    "Compass": "S"
-  },
-  {
-    "lat": -33.88489,
-    "long": 151.27785,
-    "course": 278.6,
-    "distanceKm": 0.293,
-    "distanceIntervalMeters": 7.48,
-    "Compass": "W"
-  },
-  {
-    "lat": -33.88472,
-    "long": 151.27616,
-    "course": 276.9,
-    "distanceKm": 0.45,
-    "distanceIntervalMeters": 157.47,
-    "Compass": "W"
-  },
-  {
-    "lat": -33.88471,
-    "long": 151.27607,
-    "course": 277.6,
-    "distanceKm": 0.459,
-    "distanceIntervalMeters": 8.4,
-    "Compass": "W"
-  },
-  {
-    "lat": -33.8847,
-    "long": 151.27599,
-    "course": 278.6,
-    "distanceKm": 0.466,
-    "distanceIntervalMeters": 7.48,
-    "Compass": "W"
-  },
-  {
-    "lat": -33.88469,
-    "long": 151.27594,
-    "course": 283.5,
-    "distanceKm": 0.471,
-    "distanceIntervalMeters": 4.76,
-    "Compass": "W"
-  },
-  {
-    "lat": -33.88468,
-    "long": 151.27577,
-    "course": 274.1,
-    "distanceKm": 0.487,
-    "distanceIntervalMeters": 15.77,
-    "Compass": "W"
-  },
-  {
-    "lat": -33.88466,
-    "long": 151.27541,
-    "course": 273.8,
-    "distanceKm": 0.52,
-    "distanceIntervalMeters": 33.38,
-    "Compass": "W"
-  },
-  {
-    "lat": -33.88464,
-    "long": 151.275,
-    "course": 273.4,
-    "distanceKm": 0.558,
-    "distanceIntervalMeters": 37.99,
-    "Compass": "W"
-  },
-  {
-    "lat": -33.88463,
-    "long": 151.27484,
-    "course": 274.3,
-    "distanceKm": 0.573,
-    "distanceIntervalMeters": 14.84,
-    "Compass": "W"
-  },
-  {
-    "lat": -33.88462,
-    "long": 151.27473,
-    "course": 276.2,
-    "distanceKm": 0.583,
-    "distanceIntervalMeters": 10.24,
-    "Compass": "W"
-  },
-  {
-    "lat": -33.88461,
-    "long": 151.27464,
-    "course": 277.6,
-    "distanceKm": 0.591,
-    "distanceIntervalMeters": 8.4,
-    "Compass": "W"
-  },
-  {
-    "lat": -33.88458,
-    "long": 151.27456,
-    "course": 294.3,
-    "distanceKm": 0.599,
-    "distanceIntervalMeters": 8.11,
-    "Compass": "W"
-  },
-  {
-    "lat": -33.88456,
-    "long": 151.27458,
-    "course": 39.7,
-    "distanceKm": 0.602,
-    "distanceIntervalMeters": 2.89,
-    "Compass": "WNW"
-  },
-  {
-    "lat": -33.8845,
-    "long": 151.2746,
-    "course": 15.5,
-    "distanceKm": 0.609,
-    "distanceIntervalMeters": 6.91,
-    "Compass": "NNE"
-  },
-  {
-    "lat": -33.88449,
-    "long": 151.27461,
-    "course": 39.7,
-    "distanceKm": 0.611,
-    "distanceIntervalMeters": 1.44,
-    "Compass": "N"
-  },
-  {
-    "lat": -33.8845,
-    "long": 151.2746,
-    "course": 219.7,
-    "distanceKm": 0.612,
-    "distanceIntervalMeters": 1.44,
-    "Compass": "NNE"
-  },
-  {
-    "lat": -33.88456,
-    "long": 151.27458,
-    "course": 195.5,
-    "distanceKm": 0.619,
-    "distanceIntervalMeters": 6.91,
-    "Compass": "SSW"
-  },
-  {
-    "lat": -33.88473,
-    "long": 151.27448,
-    "course": 206,
-    "distanceKm": 0.64,
-    "distanceIntervalMeters": 21,
-    "Compass": "S"
-  },
-  {
-    "lat": -33.88494,
-    "long": 151.27436,
-    "course": 205.4,
-    "distanceKm": 0.666,
-    "distanceIntervalMeters": 25.8,
-    "Compass": "SSW"
-  },
-  {
-    "lat": -33.88502,
-    "long": 151.27432,
-    "course": 202.5,
-    "distanceKm": 0.675,
-    "distanceIntervalMeters": 9.61,
-    "Compass": "SSW"
-  },
-  {
-    "lat": -33.88527,
-    "long": 151.2742,
-    "course": 201.7,
-    "distanceKm": 0.705,
-    "distanceIntervalMeters": 29.87,
-    "Compass": "SSW"
-  },
-  {
-    "lat": -33.8853,
-    "long": 151.27419,
-    "course": 195.5,
-    "distanceKm": 0.709,
-    "distanceIntervalMeters": 3.45,
-    "Compass": "S"
-  },
-  {
-    "lat": -33.88529,
-    "long": 151.27403,
-    "course": 274.3,
-    "distanceKm": 0.724,
-    "distanceIntervalMeters": 14.84,
-    "Compass": "S"
-  },
-  {
-    "lat": -33.88527,
-    "long": 151.27386,
-    "course": 278.1,
-    "distanceKm": 0.74,
-    "distanceIntervalMeters": 15.88,
-    "Compass": "W"
-  },
-  {
-    "lat": -33.88527,
-    "long": 151.27372,
-    "course": 270,
-    "distanceKm": 0.752,
-    "distanceIntervalMeters": 12.95,
-    "Compass": "W"
-  },
-  {
-    "lat": -33.88526,
-    "long": 151.27363,
-    "course": 277.6,
-    "distanceKm": 0.761,
-    "distanceIntervalMeters": 8.4,
-    "Compass": "W"
-  },
-  {
-    "lat": -33.88526,
-    "long": 151.27362,
-    "course": 270,
-    "distanceKm": 0.762,
-    "distanceIntervalMeters": 0.93,
-    "Compass": "W"
-  },
-  {
-    "lat": -33.88525,
-    "long": 151.27361,
-    "course": 320.3,
-    "distanceKm": 0.763,
-    "distanceIntervalMeters": 1.44,
-    "Compass": "W"
-  },
-  {
-    "lat": -33.88525,
-    "long": 151.2736,
-    "course": 270,
-    "distanceKm": 0.764,
-    "distanceIntervalMeters": 0.93,
-    "Compass": "NW"
-  },
-  {
-    "lat": -33.88525,
-    "long": 151.2735,
-    "course": 270,
-    "distanceKm": 0.773,
-    "distanceIntervalMeters": 9.25,
-    "Compass": "W"
-  },
-  {
-    "lat": -33.88533,
-    "long": 151.27344,
-    "course": 211.9,
-    "distanceKm": 0.784,
-    "distanceIntervalMeters": 10.47,
-    "Compass": "W"
-  },
-  {
-    "lat": -33.88534,
-    "long": 151.27344,
-    "course": 180,
-    "distanceKm": 0.785,
-    "distanceIntervalMeters": 1.11,
-    "Compass": "SSW"
-  },
-  {
-    "lat": -33.88535,
-    "long": 151.27344,
-    "course": 180,
-    "distanceKm": 0.786,
-    "distanceIntervalMeters": 1.11,
-    "Compass": "S"
-  },
-  {
-    "lat": -33.88536,
-    "long": 151.27343,
-    "course": 219.7,
-    "distanceKm": 0.788,
-    "distanceIntervalMeters": 1.44,
-    "Compass": "S"
-  },
-  {
-    "lat": -33.88544,
-    "long": 151.27346,
-    "course": 162.7,
-    "distanceKm": 0.797,
-    "distanceIntervalMeters": 9.3,
-    "Compass": "SSW"
-  },
-  {
-    "lat": -33.88545,
-    "long": 151.27347,
-    "course": 140.3,
-    "distanceKm": 0.798,
-    "distanceIntervalMeters": 1.44,
-    "Compass": "SSE"
-  },
-  {
-    "lat": -33.88546,
-    "long": 151.27348,
-    "course": 140.3,
-    "distanceKm": 0.8,
-    "distanceIntervalMeters": 1.44,
-    "Compass": "SE"
-  },
-  {
-    "lat": -33.88547,
-    "long": 151.27349,
-    "course": 140.3,
-    "distanceKm": 0.801,
-    "distanceIntervalMeters": 1.44,
-    "Compass": "SE"
-  },
-  {
-    "lat": -33.88556,
-    "long": 151.27349,
-    "course": 180,
-    "distanceKm": 0.811,
-    "distanceIntervalMeters": 9.98,
-    "Compass": "SE"
-  },
-  {
-    "lat": -33.88561,
-    "long": 151.27349,
-    "course": 180,
-    "distanceKm": 0.817,
-    "distanceIntervalMeters": 5.55,
-    "Compass": "S"
-  },
-  {
-    "lat": -33.88565,
-    "long": 151.27347,
-    "course": 202.5,
-    "distanceKm": 0.822,
-    "distanceIntervalMeters": 4.81,
-    "Compass": "S"
-  },
-  {
-    "lat": -33.88569,
-    "long": 151.27345,
-    "course": 202.5,
-    "distanceKm": 0.826,
-    "distanceIntervalMeters": 4.81,
-    "Compass": "SSW"
-  },
-  {
-    "lat": -33.88567,
-    "long": 151.27346,
-    "course": 22.5,
-    "distanceKm": 0.829,
-    "distanceIntervalMeters": 2.4,
-    "Compass": "SSW"
-  },
-  {
-    "lat": -33.88575,
-    "long": 151.27341,
-    "course": 207.4,
-    "distanceKm": 0.839,
-    "distanceIntervalMeters": 10.01,
-    "Compass": "NNE"
-  },
-  {
-    "lat": -33.88579,
-    "long": 151.27338,
-    "course": 211.9,
-    "distanceKm": 0.844,
-    "distanceIntervalMeters": 5.23,
-    "Compass": "SSW"
-  },
-  {
-    "lat": -33.88583,
-    "long": 151.27334,
-    "course": 219.7,
-    "distanceKm": 0.85,
-    "distanceIntervalMeters": 5.78,
-    "Compass": "SSW"
-  },
-  {
-    "lat": -33.88589,
-    "long": 151.27328,
-    "course": 219.7,
-    "distanceKm": 0.858,
-    "distanceIntervalMeters": 8.67,
-    "Compass": "SSW"
-  },
-  {
-    "lat": -33.88595,
-    "long": 151.27323,
-    "course": 214.7,
-    "distanceKm": 0.867,
-    "distanceIntervalMeters": 8.1,
-    "Compass": "SSW"
-  },
-  {
-    "lat": -33.88613,
-    "long": 151.27306,
-    "course": 218.1,
-    "distanceKm": 0.892,
-    "distanceIntervalMeters": 25.42,
-    "Compass": "SSW"
-  },
-  {
-    "lat": -33.88624,
-    "long": 151.27295,
-    "course": 219.7,
-    "distanceKm": 0.908,
-    "distanceIntervalMeters": 15.89,
-    "Compass": "SSW"
-  },
-  {
-    "lat": -33.88639,
-    "long": 151.2728,
-    "course": 219.7,
-    "distanceKm": 0.93,
-    "distanceIntervalMeters": 21.67,
-    "Compass": "SSW"
+    "lat": -33.88627,
+    "long": 151.27303
   },
   {
     "lat": -33.88644,
-    "long": 151.27275,
-    "course": 219.7,
-    "distanceKm": 0.937,
-    "distanceIntervalMeters": 7.22,
-    "Compass": "SSW"
+    "long": 151.27287
   },
   {
     "lat": -33.8865,
-    "long": 151.27269,
-    "course": 219.7,
-    "distanceKm": 0.945,
-    "distanceIntervalMeters": 8.67,
-    "Compass": "SSW"
+    "long": 151.2728
   },
   {
-    "lat": -33.88656,
-    "long": 151.27264,
-    "course": 214.7,
-    "distanceKm": 0.953,
-    "distanceIntervalMeters": 8.1,
-    "Compass": "SSW"
+    "lat": -33.88657,
+    "long": 151.27273
   },
   {
-    "lat": -33.88658,
-    "long": 151.27262,
-    "course": 219.7,
-    "distanceKm": 0.956,
-    "distanceIntervalMeters": 2.89,
-    "Compass": "SSW"
+    "lat": -33.88661,
+    "long": 151.27269
   },
   {
-    "lat": -33.88662,
-    "long": 151.27261,
-    "course": 191.7,
-    "distanceKm": 0.961,
-    "distanceIntervalMeters": 4.53,
-    "Compass": "SSW"
+    "lat": -33.88663,
+    "long": 151.27265
   },
   {
-    "lat": -33.88673,
-    "long": 151.27251,
-    "course": 217,
-    "distanceKm": 0.976,
-    "distanceIntervalMeters": 15.31,
-    "Compass": "S"
+    "lat": -33.88675,
+    "long": 151.27254
   },
   {
-    "lat": -33.88698,
-    "long": 151.27227,
-    "course": 218.6,
-    "distanceKm": 1.012,
-    "distanceIntervalMeters": 35.52,
-    "Compass": "SSW"
+    "lat": -33.887,
+    "long": 151.27231
   },
   {
-    "lat": -33.88735,
-    "long": 151.27192,
-    "course": 218.1,
-    "distanceKm": 1.064,
-    "distanceIntervalMeters": 52.27,
-    "Compass": "SSW"
+    "lat": -33.8871,
+    "long": 151.27221
   },
   {
-    "lat": -33.88741,
-    "long": 151.27186,
-    "course": 219.7,
-    "distanceKm": 1.073,
-    "distanceIntervalMeters": 8.67,
-    "Compass": "SSW"
-  },
-  {
-    "lat": -33.88811,
-    "long": 151.2712,
-    "course": 218.1,
-    "distanceKm": 1.171,
-    "distanceIntervalMeters": 98.77,
-    "Compass": "SSW"
+    "lat": -33.8874,
+    "long": 151.27192
   },
   {
     "lat": -33.88813,
-    "long": 151.27118,
-    "course": 219.7,
-    "distanceKm": 1.174,
-    "distanceIntervalMeters": 2.89,
-    "Compass": "SSW"
+    "long": 151.27124
   },
   {
     "lat": -33.88818,
-    "long": 151.27113,
-    "course": 219.7,
-    "distanceKm": 1.182,
-    "distanceIntervalMeters": 7.22,
-    "Compass": "SSW"
+    "long": 151.27119
   },
   {
-    "lat": -33.88846,
-    "long": 151.27086,
-    "course": 218.7,
-    "distanceKm": 1.221,
-    "distanceIntervalMeters": 39.85,
-    "Compass": "SSW"
+    "lat": -33.88849,
+    "long": 151.2709
   },
   {
-    "lat": -33.88868,
-    "long": 151.27066,
-    "course": 217,
-    "distanceKm": 1.252,
-    "distanceIntervalMeters": 30.62,
-    "Compass": "SSW"
+    "lat": -33.88865,
+    "long": 151.27074
   },
   {
-    "lat": -33.88876,
-    "long": 151.27057,
-    "course": 223,
-    "distanceKm": 1.264,
-    "distanceIntervalMeters": 12.17,
-    "Compass": "SSW"
+    "lat": -33.8887,
+    "long": 151.27069
   },
   {
-    "lat": -33.88885,
-    "long": 151.27049,
-    "course": 216.4,
-    "distanceKm": 1.277,
-    "distanceIntervalMeters": 12.43,
-    "Compass": "SSW"
+    "lat": -33.88879,
+    "long": 151.27061
   },
   {
-    "lat": -33.88888,
-    "long": 151.27046,
-    "course": 219.7,
-    "distanceKm": 1.281,
-    "distanceIntervalMeters": 4.33,
-    "Compass": "SSW"
+    "lat": -33.88887,
+    "long": 151.27053
   },
   {
-    "lat": -33.88892,
-    "long": 151.27044,
-    "course": 202.5,
-    "distanceKm": 1.286,
-    "distanceIntervalMeters": 4.81,
-    "Compass": "SSW"
+    "lat": -33.8889,
+    "long": 151.2705
   },
   {
-    "lat": -33.88899,
-    "long": 151.2704,
-    "course": 205.4,
-    "distanceKm": 1.294,
-    "distanceIntervalMeters": 8.6,
-    "Compass": "SSW"
+    "lat": -33.88893,
+    "long": 151.27048
   },
   {
-    "lat": -33.88902,
-    "long": 151.27038,
-    "course": 209,
-    "distanceKm": 1.298,
-    "distanceIntervalMeters": 3.81,
-    "Compass": "SSW"
+    "lat": -33.88898,
+    "long": 151.27045
   },
   {
-    "lat": -33.88905,
-    "long": 151.27037,
-    "course": 195.5,
-    "distanceKm": 1.302,
-    "distanceIntervalMeters": 3.45,
-    "Compass": "SSW"
+    "lat": -33.88903,
+    "long": 151.27042
   },
   {
-    "lat": -33.88909,
-    "long": 151.27036,
-    "course": 191.7,
-    "distanceKm": 1.306,
-    "distanceIntervalMeters": 4.53,
-    "Compass": "S"
+    "lat": -33.88906,
+    "long": 151.27042
   },
   {
-    "lat": -33.88916,
-    "long": 151.27036,
-    "course": 180,
-    "distanceKm": 1.314,
-    "distanceIntervalMeters": 7.76,
-    "Compass": "S"
+    "lat": -33.88912,
+    "long": 151.2704
   },
   {
-    "lat": -33.88916,
-    "long": 151.2704,
-    "course": 90,
-    "distanceKm": 1.318,
-    "distanceIntervalMeters": 3.7,
-    "Compass": "S"
+    "lat": -33.88914,
+    "long": 151.27058
   },
   {
-    "lat": -33.88918,
-    "long": 151.27058,
-    "course": 97.6,
-    "distanceKm": 1.334,
-    "distanceIntervalMeters": 16.8,
-    "Compass": "E"
+    "lat": -33.88915,
+    "long": 151.27066
   },
   {
-    "lat": -33.88919,
-    "long": 151.27065,
-    "course": 99.8,
-    "distanceKm": 1.341,
-    "distanceIntervalMeters": 6.57,
-    "Compass": "E"
+    "lat": -33.88917,
+    "long": 151.27077
   },
   {
-    "lat": -33.88921,
-    "long": 151.27075,
-    "course": 103.5,
-    "distanceKm": 1.351,
-    "distanceIntervalMeters": 9.51,
-    "Compass": "E"
-  },
-  {
-    "lat": -33.88928,
-    "long": 151.27088,
-    "course": 123,
-    "distanceKm": 1.365,
-    "distanceIntervalMeters": 14.31,
-    "Compass": "E"
+    "lat": -33.88925,
+    "long": 151.2709
   },
   {
     "lat": -33.88966,
-    "long": 151.27147,
-    "course": 127.8,
-    "distanceKm": 1.434,
-    "distanceIntervalMeters": 68.96,
-    "Compass": "ESE"
-  },
-  {
-    "lat": -33.88971,
-    "long": 151.27154,
-    "course": 130.7,
-    "distanceKm": 1.442,
-    "distanceIntervalMeters": 8.53,
-    "Compass": "ESE"
+    "long": 151.27153
   },
   {
     "lat": -33.89019,
-    "long": 151.27228,
-    "course": 128,
-    "distanceKm": 1.529,
-    "distanceIntervalMeters": 86.72,
-    "Compass": "ESE"
+    "long": 151.27234
   },
   {
-    "lat": -33.89026,
-    "long": 151.27221,
-    "course": 219.7,
-    "distanceKm": 1.539,
-    "distanceIntervalMeters": 10.11,
-    "Compass": "ESE"
-  },
-  {
-    "lat": -33.89131,
-    "long": 151.27121,
-    "course": 218.3,
-    "distanceKm": 1.688,
-    "distanceIntervalMeters": 148.73,
-    "Compass": "SSW"
-  },
-  {
-    "lat": -33.89129,
-    "long": 151.27118,
-    "course": 308.8,
-    "distanceKm": 1.691,
-    "distanceIntervalMeters": 3.55,
-    "Compass": "SSW"
-  },
-  {
-    "lat": -33.89131,
-    "long": 151.27121,
-    "course": 128.8,
-    "distanceKm": 1.695,
-    "distanceIntervalMeters": 3.55,
-    "Compass": "WNW"
-  },
-  {
-    "lat": -33.89135,
-    "long": 151.27128,
-    "course": 124.5,
-    "distanceKm": 1.703,
-    "distanceIntervalMeters": 7.85,
-    "Compass": "ESE"
-  },
-  {
-    "lat": -33.89138,
-    "long": 151.27134,
-    "course": 121.1,
-    "distanceKm": 1.709,
-    "distanceIntervalMeters": 6.47,
-    "Compass": "ESE"
-  },
-  {
-    "lat": -33.89167,
-    "long": 151.27179,
-    "course": 127.8,
-    "distanceKm": 1.762,
-    "distanceIntervalMeters": 52.61,
-    "Compass": "ESE"
-  },
-  {
-    "lat": -33.89175,
-    "long": 151.27191,
-    "course": 128.8,
-    "distanceKm": 1.776,
-    "distanceIntervalMeters": 14.21,
-    "Compass": "ESE"
-  },
-  {
-    "lat": -33.89179,
-    "long": 151.27195,
-    "course": 140.3,
-    "distanceKm": 1.782,
-    "distanceIntervalMeters": 5.78,
-    "Compass": "ESE"
-  },
-  {
-    "lat": -33.89182,
-    "long": 151.27199,
-    "course": 132.1,
-    "distanceKm": 1.787,
-    "distanceIntervalMeters": 4.98,
-    "Compass": "SE"
-  },
-  {
-    "lat": -33.89176,
-    "long": 151.27203,
-    "course": 29,
-    "distanceKm": 1.794,
-    "distanceIntervalMeters": 7.61,
-    "Compass": "ESE"
-  },
-  {
-    "lat": -33.89172,
-    "long": 151.27207,
-    "course": 39.7,
-    "distanceKm": 1.8,
-    "distanceIntervalMeters": 5.78,
-    "Compass": "NNE"
-  },
-  {
-    "lat": -33.89171,
-    "long": 151.27209,
-    "course": 58.9,
-    "distanceKm": 1.802,
-    "distanceIntervalMeters": 2.16,
-    "Compass": "NNE"
-  },
-  {
-    "lat": -33.89159,
-    "long": 151.27221,
-    "course": 39.7,
-    "distanceKm": 1.82,
-    "distanceIntervalMeters": 17.33,
-    "Compass": "NE"
-  },
-  {
-    "lat": -33.8912,
-    "long": 151.27257,
-    "course": 37.5,
-    "distanceKm": 1.874,
-    "distanceIntervalMeters": 54.59,
-    "Compass": "NNE"
-  },
-  {
-    "lat": -33.89079,
-    "long": 151.27295,
-    "course": 37.6,
-    "distanceKm": 1.932,
-    "distanceIntervalMeters": 57.48,
-    "Compass": "NNE"
-  },
-  {
-    "lat": -33.89071,
-    "long": 151.27304,
-    "course": 43,
-    "distanceKm": 1.944,
-    "distanceIntervalMeters": 12.17,
-    "Compass": "NNE"
-  },
-  {
-    "lat": -33.89065,
-    "long": 151.27309,
-    "course": 34.7,
-    "distanceKm": 1.952,
-    "distanceIntervalMeters": 8.1,
-    "Compass": "NNE"
-  },
-  {
-    "lat": -33.89067,
-    "long": 151.27313,
-    "course": 121.1,
-    "distanceKm": 1.956,
-    "distanceIntervalMeters": 4.31,
-    "Compass": "NNE"
-  },
-  {
-    "lat": -33.89083,
-    "long": 151.27336,
-    "course": 130,
-    "distanceKm": 1.984,
-    "distanceIntervalMeters": 27.71,
-    "Compass": "ESE"
+    "lat": -33.8907,
+    "long": 151.2731
   },
   {
     "lat": -33.89088,
-    "long": 151.27343,
-    "course": 130.7,
-    "distanceKm": 1.993,
-    "distanceIntervalMeters": 8.53,
-    "Compass": "ESE"
+    "long": 151.27337
   },
   {
-    "lat": -33.89095,
-    "long": 151.27354,
-    "course": 127.5,
-    "distanceKm": 2.005,
-    "distanceIntervalMeters": 12.8,
-    "Compass": "ESE"
+    "lat": -33.891,
+    "long": 151.27355
   },
   {
-    "lat": -33.89099,
-    "long": 151.27361,
-    "course": 124.5,
-    "distanceKm": 2.013,
-    "distanceIntervalMeters": 7.85,
-    "Compass": "ESE"
-  },
-  {
-    "lat": -33.89123,
-    "long": 151.27397,
-    "course": 128.8,
-    "distanceKm": 2.056,
-    "distanceIntervalMeters": 42.63,
-    "Compass": "ESE"
-  },
-  {
-    "lat": -33.89128,
-    "long": 151.27404,
-    "course": 130.7,
-    "distanceKm": 2.064,
-    "distanceIntervalMeters": 8.53,
-    "Compass": "ESE"
-  },
-  {
-    "lat": -33.8913,
-    "long": 151.27406,
-    "course": 140.3,
-    "distanceKm": 2.067,
-    "distanceIntervalMeters": 2.89,
-    "Compass": "ESE"
-  },
-  {
-    "lat": -33.89135,
-    "long": 151.27413,
-    "course": 130.7,
-    "distanceKm": 2.076,
-    "distanceIntervalMeters": 8.53,
-    "Compass": "SE"
-  },
-  {
-    "lat": -33.89138,
-    "long": 151.2741,
-    "course": 219.7,
-    "distanceKm": 2.08,
-    "distanceIntervalMeters": 4.33,
-    "Compass": "ESE"
-  },
-  {
-    "lat": -33.89148,
-    "long": 151.27425,
-    "course": 128.8,
-    "distanceKm": 2.098,
-    "distanceIntervalMeters": 17.76,
-    "Compass": "SSW"
-  },
-  {
-    "lat": -33.89156,
-    "long": 151.27434,
-    "course": 137,
-    "distanceKm": 2.11,
-    "distanceIntervalMeters": 12.17,
-    "Compass": "ESE"
-  },
-  {
-    "lat": -33.89169,
-    "long": 151.27449,
-    "course": 136.2,
-    "distanceKm": 2.13,
-    "distanceIntervalMeters": 20.01,
-    "Compass": "SE"
-  },
-  {
-    "lat": -33.89172,
-    "long": 151.27451,
-    "course": 151,
-    "distanceKm": 2.134,
-    "distanceIntervalMeters": 3.81,
-    "Compass": "SE"
-  },
-  {
-    "lat": -33.89175,
-    "long": 151.27454,
-    "course": 140.3,
-    "distanceKm": 2.138,
-    "distanceIntervalMeters": 4.33,
-    "Compass": "SE"
-  },
-  {
-    "lat": -33.89177,
-    "long": 151.27456,
-    "course": 140.3,
-    "distanceKm": 2.141,
-    "distanceIntervalMeters": 2.89,
-    "Compass": "SE"
-  },
-  {
-    "lat": -33.89179,
-    "long": 151.27459,
-    "course": 128.8,
-    "distanceKm": 2.145,
-    "distanceIntervalMeters": 3.55,
-    "Compass": "SE"
-  },
-  {
-    "lat": -33.89182,
-    "long": 151.27464,
-    "course": 125.9,
-    "distanceKm": 2.15,
-    "distanceIntervalMeters": 5.7,
-    "Compass": "ESE"
-  },
-  {
-    "lat": -33.89183,
-    "long": 151.27468,
-    "course": 106.8,
-    "distanceKm": 2.154,
-    "distanceIntervalMeters": 3.86,
-    "Compass": "ESE"
-  },
-  {
-    "lat": -33.89183,
-    "long": 151.27472,
-    "course": 90,
-    "distanceKm": 2.158,
-    "distanceIntervalMeters": 3.7,
-    "Compass": "E"
-  },
-  {
-    "lat": -33.89183,
-    "long": 151.27473,
-    "course": 90,
-    "distanceKm": 2.159,
-    "distanceIntervalMeters": 0.93,
-    "Compass": "E"
-  },
-  {
-    "lat": -33.89183,
-    "long": 151.27474,
-    "course": 90,
-    "distanceKm": 2.16,
-    "distanceIntervalMeters": 0.93,
-    "Compass": "E"
-  },
-  {
-    "lat": -33.89184,
-    "long": 151.27475,
-    "course": 140.3,
-    "distanceKm": 2.161,
-    "distanceIntervalMeters": 1.44,
-    "Compass": "E"
-  },
-  {
-    "lat": -33.89186,
-    "long": 151.27476,
-    "course": 157.5,
-    "distanceKm": 2.164,
-    "distanceIntervalMeters": 2.4,
-    "Compass": "SE"
-  },
-  {
-    "lat": -33.89187,
-    "long": 151.27478,
-    "course": 121.1,
-    "distanceKm": 2.166,
-    "distanceIntervalMeters": 2.16,
-    "Compass": "SSE"
-  },
-  {
-    "lat": -33.89187,
-    "long": 151.27479,
-    "course": 90,
-    "distanceKm": 2.167,
-    "distanceIntervalMeters": 0.93,
-    "Compass": "ESE"
-  },
-  {
-    "lat": -33.89186,
-    "long": 151.2748,
-    "course": 39.7,
-    "distanceKm": 2.168,
-    "distanceIntervalMeters": 1.44,
-    "Compass": "E"
-  },
-  {
-    "lat": -33.89186,
-    "long": 151.27482,
-    "course": 90,
-    "distanceKm": 2.17,
-    "distanceIntervalMeters": 1.85,
-    "Compass": "NNE"
-  },
-  {
-    "lat": -33.89186,
-    "long": 151.27483,
-    "course": 90,
-    "distanceKm": 2.171,
-    "distanceIntervalMeters": 0.93,
-    "Compass": "E"
-  },
-  {
-    "lat": -33.89186,
-    "long": 151.27484,
-    "course": 90,
-    "distanceKm": 2.172,
-    "distanceIntervalMeters": 0.93,
-    "Compass": "E"
-  },
-  {
-    "lat": -33.89191,
-    "long": 151.27488,
-    "course": 146.4,
-    "distanceKm": 2.179,
-    "distanceIntervalMeters": 6.67,
-    "Compass": "E"
+    "lat": -33.89124,
+    "long": 151.27391
   }
 ]
