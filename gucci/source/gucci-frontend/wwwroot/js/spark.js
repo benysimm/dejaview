@@ -51,13 +51,13 @@ var Spark = {
     $('.keyword-search').on('input', mark);
   },
   createSnackbars: function(){
-    MDSnackbars.init();
-    setTimeout(function(){
-      MDSnackbars.show({text: 'Good afternoon Lucy!', timeout:7500, align: 'right', animation: 'slideup'});
-    }, 1500);
-    setTimeout(function(){
-      MDSnackbars.show({text: '<strong>Robert says:</strong> Good work yesterday! Lunch at 2pm?', timeout:7500, align: 'right', html: true, animation: 'slideup'});
-    }, 12500);
+//    MDSnackbars.init();
+//    setTimeout(function(){
+//      MDSnackbars.show({text: 'Good afternoon Lucy!', timeout:7500, align: 'right', animation: 'slideup'});
+//    }, 1500);
+//    setTimeout(function(){
+//      MDSnackbars.show({text: '<strong>Robert says:</strong> Good work yesterday! Lunch at 2pm?', timeout:7500, align: 'right', html: true, animation: 'slideup'});
+//    }, 12500);
   },
   createWidgets: function() {
 

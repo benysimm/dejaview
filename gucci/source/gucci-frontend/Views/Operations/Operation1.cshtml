@@ -126,13 +126,10 @@
                 </div><!-- /.col-md-4 -->
             </div>
             <footer class="site-footer text-center">
-                <p>&copy; 2018 Spark</p>
-                <ul class="list-inline">
-                    <li class="list-inline-item"><a href="#">Home</a></li>
-                    <li class="list-inline-item"><a href="#">Support</a></li>
-                    <li class="list-inline-item"><a href="#">FAQ</a></li>
-                    <li class="list-inline-item"><a href="#">Contact</a></li>
-                </ul>
+                <p>
+                    <strong>OB1</strong> made by
+                    <a href="https://#">awesome cross team collaboration</a>
+                </p>
             </footer>
         </div>
     </div>
@@ -245,7 +242,7 @@
 
             // Point the URL to a valid route service
             var routeTask = new RouteTask({
-                url: "https://route.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World?token=RGqSeLkdn0tvOlUU-cnSpttA8UhM60fnAkt9FPX9y5KIH9EXE_peSO24wR-egKHmTHScYy3SfCIwdH5EAPduYbgk2Jzx1AnzmDNZik1clar3chOcMSiIzETEotj6dJFbGsaTZbG5ixOBLXZnSsQ2uw.."
+                url: "https://route.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World?token=@Config.EsriToken"
             });
 
             // The stops and route result will be stored in this layer

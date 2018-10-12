@@ -1489,7 +1489,8 @@ h1, h2, h3, h4, h5, h6,
   .navbar-spark .navbar-nav .nav-item + .nav-item {
     margin-left: 0; }
   .navbar-spark .navbar-brand {
-    color: #41D492; }
+    color: #41D492;
+  }
   .navbar-spark .navbar-brand:hover,
   .navbar-spark .navbar-brand:focus {
     color: #41D492;
