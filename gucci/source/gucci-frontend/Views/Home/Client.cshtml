@@ -105,7 +105,6 @@
                             <!--ArcGIS test-->
                             <div style="height: 400px" id="viewDiv"></div>
                         </div>
-                        <div>Lat/Long: <span id="latlong"></span></div>
                     </div>
                 </div><!-- /.col-md-9 -->
             </div>
@@ -196,9 +195,9 @@
 
                 var view = new MapView({
                     map: map,
-                    center: [151.27882, -33.8843], //[149.137802, -35.313423],
+                    center: [151.2707436, -33.8886468], //[149.137802, -35.313423],
                     container: "viewDiv",
-                    zoom: 16
+                    zoom: 15
                 });
 
                 var deviceTestPath = [];
@@ -220,7 +219,7 @@
                 //                });
 
 
-                setInterval(refreshMap, 3000);
+                setInterval(refreshMap, 2000);
 
                 function getCurrentGpsLocation() {
                     return deviceTestPath.shift();
@@ -346,7 +345,7 @@
                             console.log('users last visited point was ' + lastVisitedIndex);
                             
                             // else render last visited point plus 2
-                            if (lastVisitedIndex <= i && i <= (lastVisitedIndex + 2)) {
+                            if (lastVisitedIndex <= i && i < (lastVisitedIndex + 2)) {
                                 console.log('rendering a point! ' + i);
 
                                 var point = {
@@ -404,20 +403,20 @@
                 }
             });
 
-        function newLocation(position) {
-            var lat = position.coords.latitude;
-            var long = position.coords.longitude;
-            document.getElementById("latlong").innerHTML = lat + " , " + long;
-        }
-
-        function errLocation(err) {
-            document.getElementById("latlong").innerHTML = err.code + ":" + err.message;
-        }
-
-        var options = { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 };
-
-        //navigator.geolocation.getCurrentPosition(showLocation); //Get once
-        navigator.geolocation.watchPosition(newLocation, errLocation, options); //Poll
+//        function newLocation(position) {
+//            var lat = position.coords.latitude;
+//            var long = position.coords.longitude;
+//            document.getElementById("latlong").innerHTML = lat + " , " + long;
+//        }
+//
+//        function errLocation(err) {
+//            document.getElementById("latlong").innerHTML = err.code + ":" + err.message;
+//        }
+//
+//        var options = { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 };
+//
+//        //navigator.geolocation.getCurrentPosition(showLocation); //Get once
+//        navigator.geolocation.watchPosition(newLocation, errLocation, options); //Poll
     </script>
     <script src="../js/pages/generalpage.js"></script>
 }
