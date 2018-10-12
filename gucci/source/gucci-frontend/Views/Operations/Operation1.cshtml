@@ -322,17 +322,44 @@
             var view = new MapView({
                 container: "simple-map-div", // Reference to the scene div created in step 5
                 map: map, // Reference to the map object created before the scene
-                center: [149.137802, -35.313423],
+                center: [151.27882, -33.8843],
                 zoom: 16
             });
-
-
 
             // Create a symbol for drawing the point
             var markerSymbol = {
                 type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
                 color: [226, 119, 40]
             };
+
+              // Create a polygon geometry
+      var polygon = {
+        type: "polygon", // autocasts as new Polygon()
+        rings: [
+          [151.274034, -33.887742],
+          [151.273808, -33.887591],
+          [151.273647, -33.887769],
+          [151.273776, -33.887845],
+          [151.274034, -33.887742]
+        ]
+      };
+
+      // Create a symbol for rendering the graphic
+      var fillSymbol = {
+        type: "simple-fill", // autocasts as new SimpleFillSymbol()
+        color: [255, 50, 50, 0.8],
+        outline: { // autocasts as new SimpleLineSymbol()
+          color: [255, 255, 255],
+          width: 1
+        }
+      };
+
+      // Add the geometry and symbol to a new graphic
+      var polygonGraphic = new Graphic({
+        geometry: polygon,
+        symbol: fillSymbol
+      });
+        view.graphics.add(polygonGraphic);
 
             // ugly promise chain to ensure all points are returned before attempign to solve the route
             // needs to be tweaked but it works
@@ -414,6 +441,6 @@
 
         //navigator.geolocation.getCurrentPosition(showLocation); //Get once
         navigator.geolocation.watchPosition(newLocation, errLocation, options);      //Poll
-        </script>
+    </script>
     <script src="../js/pages/generalpage.js"></script>
 }
